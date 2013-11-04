@@ -4743,6 +4743,22 @@ public final class Settings {
 
         private static final Validator OMNI_DOZE_ON_CHARGE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+        /**
+         * Control the type of rotation which can be performed using the accelerometer
+         * if ACCELEROMETER_ROTATION is enabled.
+         * Value is a bitwise combination of
+         * 1 = 0 degrees (portrait)
+         * 2 = 90 degrees (left)
+         * 4 = 180 degrees (inverted portrait)
+         * 8 = 270 degrees (right)
+         * Setting to 0 is effectively orientation lock
+         * @hide
+         */
+        public static final String ACCELEROMETER_ROTATION_ANGLES = "accelerometer_rotation_angles";
+
+        /** @hide */
+        private static final Validator ACCELEROMETER_ROTATION_ANGLES_VALIDATOR =
+                NON_NEGATIVE_INTEGER_VALIDATOR;
 
         /**
          * hidden stting of the current atate of DOZE only when charging
@@ -4824,7 +4840,8 @@ public final class Settings {
             OMNI_LOCKSCREEN_MEDIA_BLUR,
             TOAST_ANIMATION,
             OMNI_DOZE_ON_CHARGE,
-            NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE
+            NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE,
+            ACCELEROMETER_ROTATION_ANGLES,
         };
 
         /**
@@ -4954,6 +4971,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE);
             PRIVATE_SETTINGS.add(TOAST_ANIMATION);
             PRIVATE_SETTINGS.add(OMNI_DOZE_ON_CHARGE);
+            PRIVATE_SETTINGS.add(ACCELEROMETER_ROTATION_ANGLES);
         }
 
         /**
@@ -5059,6 +5077,8 @@ public final class Settings {
             VALIDATORS.put(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR);
             VALIDATORS.put(TOAST_ANIMATION,TOAST_ANIMATION_VALIDATOR);
             VALIDATORS.put(OMNI_DOZE_ON_CHARGE, OMNI_DOZE_ON_CHARGE_VALIDATOR);
+            VALIDATORS.put(ACCELEROMETER_ROTATION_ANGLES,
+                    ACCELEROMETER_ROTATION_ANGLES_VALIDATOR);
         }
 
         /**
