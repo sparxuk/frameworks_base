@@ -4641,6 +4641,7 @@ public final class Settings {
         /** @hide */
         private static final Validator OMNI_LOCKSCREEN_WEATHER_ENABLED_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+
         /**
          * Wheter to play notification sound and vibration if screen is on
          * @hide
@@ -4649,6 +4650,15 @@ public final class Settings {
 
         /** @hide */
         private static final Validator NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
+         * Force expanded notifications on all apps that support it.
+         * @hide
+         */
+        public static final String FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+
+        private static final Validator FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
         /**
@@ -4758,7 +4768,8 @@ public final class Settings {
             TOAST_ICON,
             TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
-            FINGERPRINT_SUCCESS_VIB
+            FINGERPRINT_SUCCESS_VIB,
+            FORCE_EXPANDED_NOTIFICATIONS,
         };
 
         /**
@@ -4900,6 +4911,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNIJAWS_WEATHER_ICON_PACK);
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_WEATHER_ENABLED);
             PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
+            PRIVATE_SETTINGS.add(FORCE_EXPANDED_NOTIFICATIONS);
         }
 
         /**
@@ -5006,6 +5018,7 @@ public final class Settings {
                     NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR);
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB,
                     FINGERPRINT_SUCCESS_VIB_VALIDATOR);
+            VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS,FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
         }
 
         /**
