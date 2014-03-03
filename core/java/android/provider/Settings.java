@@ -4723,6 +4723,18 @@ public final class Settings {
         private static final Validator OMNI_LOCKSCREEN_MEDIA_BLUR_VALIDATOR =
                 ANY_INTEGER_VALIDATOR;
 
+
+        /**
+        * Toast animations
+        *
+        * @hide
+        */
+        public static final String TOAST_ANIMATION = "toast_animation";
+
+        /** @hide */
+        private static final Validator TOAST_ANIMATION_VALIDATOR =
+              new SettingsValidators.InclusiveIntegerRangeValidator(0, 15);
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -4795,6 +4807,7 @@ public final class Settings {
             DOUBLE_TAP_SLEEP_GESTURE,
             DOUBLE_TAP_SLEEP_LOCKSCREEN,
             OMNI_LOCKSCREEN_MEDIA_BLUR,
+            TOAST_ANIMATION,
             NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE
         };
 
@@ -4923,6 +4936,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DOUBLE_TAP_SLEEP_LOCKSCREEN);
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_MEDIA_BLUR);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE);
+            PRIVATE_SETTINGS.add(TOAST_ANIMATION);
         }
 
         /**
@@ -5026,6 +5040,7 @@ public final class Settings {
                     DOUBLE_TAP_SLEEP_LOCKSCREEN_VALIDATOR);
             VALIDATORS.put(OMNI_LOCKSCREEN_MEDIA_BLUR, OMNI_LOCKSCREEN_MEDIA_BLUR_VALIDATOR);
             VALIDATORS.put(NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE_VALIDATOR);
+            VALIDATORS.put(TOAST_ANIMATION,TOAST_ANIMATION_VALIDATOR);
         }
 
         /**
