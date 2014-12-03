@@ -696,6 +696,8 @@ public class StatusBar extends SystemUI implements DemoMode,
         mDevicePolicyManager = (DevicePolicyManager) mContext.getSystemService(
                 Context.DEVICE_POLICY_SERVICE);
 
+        mNotificationData = new NotificationData(this);
+
         mAccessibilityManager = (AccessibilityManager)
                 mContext.getSystemService(Context.ACCESSIBILITY_SERVICE);
 
@@ -1637,6 +1639,18 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     public void requestNotificationUpdate() {
         mEntryManager.updateNotifications();
+    }
+
+    protected boolean hasActiveVisibleNotifications() {
+        return mNotificationData.hasActiveVisibleNotifications();
+    }
+
+    protected boolean hasActiveOngoingNotifications() {
+        return mNotificationData.hasActiveOngoingNotifications();
+    }
+
+    protected boolean hasActiveClearableNotificationsQS() {
+        return hasActiveClearableNotifications();
     }
 
     protected void setAreThereNotifications() {
@@ -5169,6 +5183,7 @@ public class StatusBar extends SystemUI implements DemoMode,
     protected IStatusBarService mBarService;
 
     // all notifications
+    protected NotificationData mNotificationData;
     protected NotificationStackScrollLayout mStackScroller;
 
     protected NotificationGroupManager mGroupManager;
@@ -5294,6 +5309,9 @@ public class StatusBar extends SystemUI implements DemoMode,
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STOCK_STATUSBAR_IN_HIDE),
                     false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.QS_SMART_PULLDOWN),
+                    false, this, UserHandle.USER_ALL);
         }
 
         @Override
@@ -5310,7 +5328,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                 setFpToDismissNotifications();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_LOCKSCREEN))) {
-                setLockscreenDoubleTapToSleep();
+                setStatusBarWindowViewOptions();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK)) ||
                    uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_INFO)) ||
                    uri.equals(Settings.System.getUriFor(Settings.System.LOCKSCREEN_CLOCK_SELECTION))) {
@@ -5324,10 +5342,12 @@ public class StatusBar extends SystemUI implements DemoMode,
                 setPulseBlacklist();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE))) {
-                setLockscreenDoubleTapToSleep();
+                setStatusBarWindowViewOptions();
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.LOCKSCREEN_MEDIA_METADATA))) {
-                setLockscreenMediaMetadata();
+				setLockscreenMediaMetadata();
+            } else if (uri.equals(Settings.System.getUriFor(Settings.System.QS_SMART_PULLDOWN))) {
+                setStatusBarWindowViewOptions();
             } else if (uri.equals(Settings.System.getUriFor(Settings.System.DISPLAY_CUTOUT_MODE)) ||
                     uri.equals(Settings.System.getUriFor(Settings.System.STOCK_STATUSBAR_IN_HIDE))) {
                 handleCutout(null);
@@ -5335,12 +5355,12 @@ public class StatusBar extends SystemUI implements DemoMode,
         }
 
         public void update() {
-            setLockscreenDoubleTapToSleep();
             setFpToDismissNotifications();
             updateKeyguardStatusSettings();
             setQsRowsColumns();
             handleCutout(null);
             setPulseBlacklist();
+            setStatusBarWindowViewOptions();
             setLockscreenMediaMetadata();
         }
     }
@@ -5602,13 +5622,7 @@ public class StatusBar extends SystemUI implements DemoMode,
             return false;
         }
     }
-
-    private void setLockscreenDoubleTapToSleep() {
-        if (mStatusBarWindow != null) {
-            mStatusBarWindow.setLockscreenDoubleTapToSleep();
-        }
-    }
-    
+  
     private void removeNotification(StatusBarNotification notification) {
         // We have to post it to the UI thread for synchronization
         mHandler.post(() -> {
@@ -6043,4 +6057,10 @@ public class StatusBar extends SystemUI implements DemoMode,
                     saveImportance.run();
                 }
             };
+
+    private void setStatusBarWindowViewOptions() {
+        if (mStatusBarWindow != null) {
+            mStatusBarWindow.setStatusBarWindowViewOptions();
+        }
+    }
 }

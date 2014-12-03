@@ -4871,6 +4871,16 @@ public final class Settings {
        public static final String BATTERY_LIGHT_REALLYFULL_COLOR = "battery_light_reallyfull_color";
 
         /**
+        * Quick Settings Smart Pulldown
+        * @hide
+        */
+        public static final String QS_SMART_PULLDOWN = "qs_smart_pulldown";
+
+        /** @hide */
+        private static final Validator QS_SMART_PULLDOWN_VALIDATOR =
+              new SettingsValidators.InclusiveIntegerRangeValidator(0, 3);
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4942,7 +4952,7 @@ public final class Settings {
             DISPLAY_CUTOUT_MODE,
             STOCK_STATUSBAR_IN_HIDE,
             FORCE_EXPANDED_NOTIFICATIONS,
-            OMNI_VOLUME_BUTTON_MUSIC_CONTROL
+            QS_SMART_PULLDOWN,
         };
 
         /**
@@ -5089,6 +5099,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_VOLUME_BUTTON_MUSIC_CONTROL);
             PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
+            PRIVATE_SETTINGS.add(QS_SMART_PULLDOWN);
         }
 
         /**
@@ -5202,6 +5213,7 @@ public final class Settings {
                     OMNI_VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR);
             VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
+            VALIDATORS.put(QS_SMART_PULLDOWN,QS_SMART_PULLDOWN_VALIDATOR);
         }
 
         /**
