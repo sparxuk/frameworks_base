@@ -4293,6 +4293,16 @@ public final class Settings {
         public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
 
         /**
+         * Toast icon
+         * @hide
+         */
+        public static final String TOAST_ICON = "toast_icon";
+
+        /** @hide */
+        private static final Validator TOAST_ICON_VALIDATOR =
+              BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4353,6 +4363,7 @@ public final class Settings {
             DISPLAY_COLOR_MODE,
             OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
             OMNI_SHOW_BATTERY_IMAGE,
+            TOAST_ICON,
         };
 
         /**
@@ -4486,6 +4497,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_SHOW_BATTERY_IMAGE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+            PRIVATE_SETTINGS.add(TOAST_ICON);
         }
 
         /**
@@ -4579,6 +4591,7 @@ public final class Settings {
             VALIDATORS.put(BUTTON_BRIGHTNESS_ENABLED, BUTTON_BRIGHTNESS_ENABLED_VALIDATOR);
             VALIDATORS.put(OMNI_USE_BOTTOM_GESTURE_NAVIGATION,OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
             VALIDATORS.put(OMNI_SHOW_BATTERY_IMAGE, OMNI_SHOW_BATTERY_IMAGE_VALIDATOR);
+            VALIDATORS.put(TOAST_ICON,TOAST_ICON_VALIDATOR);
         }
 
         /**
