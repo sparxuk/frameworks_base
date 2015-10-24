@@ -12322,6 +12322,14 @@ public final class Settings {
                 "max_sound_trigger_detection_service_ops_per_day";
 
         /**
+         * This preference enables showing the power menu on LockScreen.
+         * @hide
+         */
+        public static final String LOCKSCREEN_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
+
+        private static final Validator LOCKSCREEN_ENABLE_POWER_MENU_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -12365,6 +12373,7 @@ public final class Settings {
             SOFT_AP_TIMEOUT_ENABLED,
             ZEN_DURATION,
             CHARGING_VIBRATION_ENABLED,
+            LOCKSCREEN_ENABLE_POWER_MENU,
         };
 
         /**
@@ -12409,6 +12418,7 @@ public final class Settings {
             VALIDATORS.put(APP_AUTO_RESTRICTION_ENABLED, APP_AUTO_RESTRICTION_ENABLED_VALIDATOR);
             VALIDATORS.put(ZEN_DURATION, ZEN_DURATION_VALIDATOR);
             VALIDATORS.put(CHARGING_VIBRATION_ENABLED, CHARGING_VIBRATION_ENABLED_VALIDATOR);
+            VALIDATORS.put(LOCKSCREEN_ENABLE_POWER_MENU,LOCKSCREEN_ENABLE_POWER_MENU_VALIDATOR);
         }
 
         /**
