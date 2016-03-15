@@ -4834,6 +4834,14 @@ public final class Settings {
                 SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
 
         /**
+         * Whether user can swap navigation lateral keys.
+         * <p>
+         * Type: int (0 for false, 1 for true)
+         * @hide
+         */
+        public static final String SWAP_NAVIGATION_KEYS = "swap_navigation_keys";
+
+        /**
          * Control how to handle the display cutout
          * @hide
          */
