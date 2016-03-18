@@ -4767,6 +4767,16 @@ public final class Settings {
          * @hide
          */
         public static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+ 
+        /**
+         * Control music seeking with volume up/down buttons
+         *
+         * @hide
+         */
+        public static final String OMNI_VOLUME_BUTTON_MUSIC_CONTROL = "volume_button_music_control";
+
+        private static final Validator OMNI_VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          *  Enable statusbar double tap gesture on to put device to sleep
@@ -4844,6 +4854,7 @@ public final class Settings {
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
             FINGERPRINT_SUCCESS_VIB,
             FORCE_EXPANDED_NOTIFICATIONS,
+            OMNI_VOLUME_BUTTON_MUSIC_CONTROL
         };
 
         /**
@@ -4987,6 +4998,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_WEATHER_ENABLED);
             PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
             PRIVATE_SETTINGS.add(FORCE_EXPANDED_NOTIFICATIONS);
+            PRIVATE_SETTINGS.add(OMNI_VOLUME_BUTTON_MUSIC_CONTROL);
         }
 
         /**
@@ -5096,6 +5108,8 @@ public final class Settings {
             VALIDATORS.put(FINGERPRINT_SUCCESS_VIB,
                     FINGERPRINT_SUCCESS_VIB_VALIDATOR);
             VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS,FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
+            VALIDATORS.put(OMNI_VOLUME_BUTTON_MUSIC_CONTROL,
+                    OMNI_VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR);
         }
 
         /**
