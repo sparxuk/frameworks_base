@@ -50,6 +50,7 @@ import com.android.systemui.qs.tiles.ScreenRecordTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
 import com.android.systemui.qs.tiles.SoundTile;
+import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.UsbTetherTile;
 import com.android.systemui.qs.tiles.UserTile;
 import com.android.systemui.qs.tiles.ValidusTile;
@@ -88,6 +89,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<SoundTile> mSoundTileProvider;
     private final Provider<CPUInfoTile> mCPUInfoTileProvider;
     private final Provider<ScreenRecordTile> mScreenRecordTileProvider;
+    private final Provider<SyncTile> mSyncTileProvider;
 
     private QSTileHost mHost;
 
@@ -113,7 +115,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<UiModeNightTile> uiModeNightTileProvider,
             Provider<SoundTile> soundTileProvider,
             Provider<CPUInfoTile> cpuInfoTileProvider,
-            Provider<ScreenRecordTile> screenRecordTileProvider) {
+            Provider<ScreenRecordTile> screenRecordTileProvider,
+            Provider<SyncTile> syncTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -136,6 +139,7 @@ public class QSFactoryImpl implements QSFactory {
         mSoundTileProvider = soundTileProvider;
         mCPUInfoTileProvider = cpuInfoTileProvider;
         mScreenRecordTileProvider = screenRecordTileProvider;
+        mSyncTileProvider = syncTileProvider;
     }
 
     public void setHost(QSTileHost host) {
@@ -209,6 +213,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new ValidusTile(mHost);
             case "screenrecord":
                 return mScreenRecordTileProvider.get();
+            case "sync":
+                return mSyncTileProvider.get();
         }
 
         // Intent tiles.
