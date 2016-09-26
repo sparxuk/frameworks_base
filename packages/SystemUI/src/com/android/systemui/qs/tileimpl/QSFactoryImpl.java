@@ -42,6 +42,7 @@ import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenrecordTile;
+import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.ThemeTile;
 import com.android.systemui.qs.tiles.UserTile;
 import com.android.systemui.qs.tiles.WifiTile;
@@ -114,8 +115,10 @@ public class QSFactoryImpl implements QSFactory {
                 return new WeatherTile(mHost);
             case "reboot":
                 return new RebootTile(mHost);
-				case "music":
-                return new MusicTile(mHost);               
+			case "music":
+                return new MusicTile(mHost);
+            case "sync":
+                return new SyncTile(mHost);            
         }
 
         // Intent tiles.
