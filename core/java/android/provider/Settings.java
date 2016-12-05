@@ -4823,6 +4823,12 @@ public final class Settings {
          */
         public static final String DISPLAY_CUTOUT_MODE = "display_cutout_mode";
 
+        /**
+         * Whether to launch default music player when headset plugged in
+         * @hide
+         */
+        public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
+
         /** @hide */
         private static final Validator DISPLAY_CUTOUT_MODE_VALIDATOR = new
                 SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
@@ -4840,9 +4846,9 @@ public final class Settings {
         public static final String ONE_HAND_MODE_ENABLED = "one_hand_mode_enabled";
 	
         /** @hide */
-	private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+        private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
 
-	/**
+        /**
          * @hide
          */
         public static final String SHOW_BATTERY_ESTIMATE_QQS = "show_battery_estimate_qqs";
@@ -4851,7 +4857,7 @@ public final class Settings {
         private static final Validator SHOW_BATTERY_ESTIMATE_QQS_VALIDATOR =
                 BOOLEAN_VALIDATOR;
         
-	/** @hide */
+        /** @hide */
         private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
