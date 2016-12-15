@@ -4833,7 +4833,16 @@ public final class Settings {
          */
         public static final String STOCK_STATUSBAR_IN_HIDE = "stock_statusbar_in_hide";
 
+        /**	
+          * enable or disable single handed mode
+          * @hide
+          */
+        public static final String ONE_HAND_MODE_ENABLED = "one_hand_mode_enabled";
+	
         /** @hide */
+	private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+        
+	/** @hide */
         private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
@@ -4968,6 +4977,7 @@ public final class Settings {
             STOCK_STATUSBAR_IN_HIDE,
             FORCE_EXPANDED_NOTIFICATIONS,
             QS_SMART_PULLDOWN,
+	    ONE_HAND_MODE_ENABLED,
         };
 
         /**
@@ -5115,6 +5125,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
             PRIVATE_SETTINGS.add(QS_SMART_PULLDOWN);
+	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
         }
 
         /**
@@ -5229,6 +5240,7 @@ public final class Settings {
             VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
             VALIDATORS.put(QS_SMART_PULLDOWN,QS_SMART_PULLDOWN_VALIDATOR);
+	    VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
         }
 
         /**
@@ -14426,3 +14438,4 @@ public final class Settings {
         return packages[0];
     }
 }
+
