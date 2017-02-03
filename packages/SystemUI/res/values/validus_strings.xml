@@ -97,5 +97,8 @@
     <string name="accessibility_quick_settings_sync_on">Sync on</string>
     <string name="accessibility_quick_settings_sync_changed_off">Sync turned off</string>
     <string name="accessibility_quick_settings_sync_changed_on">Sync turned on</string>
+
+    <!-- Running service button -->
+    <string name="accessibility_quick_settings_running_services">Open Running Services screen.</string>
        
 </resources>
