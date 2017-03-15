@@ -4399,6 +4399,11 @@ public final class Settings {
               BOOLEAN_VALIDATOR;
 
         /**
+         * @hide
+         */
+        public static final String ROAMING_INDICATOR_ICON = "roaming_indicator_icon";
+
+        /**
          * Whether to display screenshot in the power menu
          *
          * @hide
