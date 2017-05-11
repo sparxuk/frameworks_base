@@ -4825,6 +4825,12 @@ public final class Settings {
 
         /**
          * Whether to launch default music player when headset plugged in
+         * 0 = don't do anything (default)
+         * 1 = launch only on wired connection
+         * 2 = launch only on bt connection but no carkit
+         * 3 = launch only on bt connection
+         * 4 = launch on both connection types but no carkit
+         * 5 = launch on both connection types
          * @hide
          */
         public static final String HEADSET_CONNECT_PLAYER = "headset_connect_player";
@@ -5161,6 +5167,7 @@ public final class Settings {
 	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
             PRIVATE_SETTINGS.add(SHOW_BATTERY_ESTIMATE_QQS);
             PRIVATE_SETTINGS.add(SHOW_LTE_FOURGEE);
+            PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
         }
 
         /**
