@@ -314,10 +314,13 @@ public class TileAdapter extends RecyclerView.Adapter<Holder> implements TileSta
 
         final boolean selectable = mAccessibilityAction == ACTION_NONE || position < mEditIndex;
         if (!(mAccessibilityManager.isTouchExplorationEnabled() && selectable)) {
-            holder.mTileView.setOnClickListener(v -> move(holder.getAdapterPosition(),
-                    mEditIndex, holder.mTileView));
+            holder.mTileView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    move(holder.getAdapterPosition(), mEditIndex, holder.mTileView);
+                }
+            });
         }
-
         if (mAccessibilityManager.isTouchExplorationEnabled()) {
             holder.mTileView.setClickable(selectable);
             holder.mTileView.setFocusable(selectable);
