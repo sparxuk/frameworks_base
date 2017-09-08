@@ -76,5 +76,7 @@
 
     <!-- Validus Settings Tile -->
     <string name="quick_settings_validus_label">FunHouse</string>
+
+    <string name="statusbar_items_title">Statusbar icons</string>
     
 </resources>
