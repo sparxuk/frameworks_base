@@ -38,6 +38,7 @@ import com.android.systemui.qs.tiles.IntentTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
+import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenrecordTile;
 import com.android.systemui.qs.tiles.ThemeTile;
@@ -109,7 +110,9 @@ public class QSFactoryImpl implements QSFactory {
             case "theme":
                 return new ThemeTile(mHost);
             case "weather":
-                return new WeatherTile(mHost);            
+                return new WeatherTile(mHost);
+            case "reboot":
+                return new RebootTile(mHost);            
         }
 
         // Intent tiles.
