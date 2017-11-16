@@ -41,6 +41,7 @@ import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.MusicTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
+import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.ScreenshotTile;
@@ -176,6 +177,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new MusicTile(mHost);
             case "screenshot":
                 return new ScreenshotTile(mHost);
+            case "reboot":
+                return new RebootTile(mHost);
         }
 
         // Intent tiles.
