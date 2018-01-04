@@ -4624,6 +4624,15 @@ public final class Settings {
         /** @hide */
         private static final Validator OMNI_LOCKSCREEN_WEATHER_ENABLED_VALIDATOR =
                 BOOLEAN_VALIDATOR;
+        /**
+         * Wheter to play notification sound and vibration if screen is on
+         * @hide
+         */
+        public static final String NOTIFICATION_SOUND_VIB_SCREEN_ON = "notification_sound_vib_screen_on";
+
+        /** @hide */
+        private static final Validator NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR =
+                BOOLEAN_VALIDATOR;
 
         /**
          * IMPORTANT: If you add a new public settings you also have to add it to
@@ -4698,6 +4707,7 @@ public final class Settings {
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
             TOAST_ICON,
             TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
+            NOTIFICATION_SOUND_VIB_SCREEN_ON,
         };
 
         /**
@@ -4837,6 +4847,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STATUS_BAR_LOGO);
             PRIVATE_SETTINGS.add(OMNIJAWS_WEATHER_ICON_PACK);
             PRIVATE_SETTINGS.add(OMNI_LOCKSCREEN_WEATHER_ENABLED);
+            PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
         }
 
         /**
@@ -4939,6 +4950,8 @@ public final class Settings {
             VALIDATORS.put(OMNIJAWS_WEATHER_ICON_PACK, OMNIJAWS_WEATHER_ICON_PACK_VALIDATOR);
             VALIDATORS.put(OMNI_LOCKSCREEN_WEATHER_ENABLED,
                     OMNI_LOCKSCREEN_WEATHER_ENABLED_VALIDATOR);
+            VALIDATORS.put(NOTIFICATION_SOUND_VIB_SCREEN_ON,
+                    NOTIFICATION_SOUND_VIB_SCREEN_ON_VALIDATOR);
         }
 
         /**
