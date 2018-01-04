@@ -138,4 +138,7 @@
 
     <bool name="config_usesOnePlusFOD">false</bool>
 
+    <!-- Whether the device supports Smart Pixels -->
+    <bool name="config_enableSmartPixels">false</bool>
+
 </resources>
