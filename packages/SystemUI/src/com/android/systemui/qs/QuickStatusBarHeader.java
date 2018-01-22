@@ -186,7 +186,7 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIcon = (BatteryMeterView) findViewById(R.id.batteryRemainingIcon);
         mBatteryRemainingIcon.isQsbHeader();
         mBatteryRemainingIcon.setShowEstimate();
-        mBatteryRemainingIcon.setForceShowPercent(true);
+        mBatteryRemainingIcon.setForceShowPercent(false);
         mBatteryRemainingIcon.setOnClickListener(this);
 
         mClockView = findViewById(R.id.clock);
