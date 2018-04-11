@@ -5042,6 +5042,16 @@ public final class Settings {
         public static final String BATTERY_BAR_USE_GRADIENT_COLOR = "battery_bar_use_gradient_color";
 
         /**
+         * Whether to change the transparency of the qs panel
+         * @hide
+         */
+        public static final String QS_PANEL_BG_ALPHA = "qs_panel_bg_alpha";
+
+        /** @hide */
+        private static final Validator QS_PANEL_BG_ALPHA_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5130,6 +5140,7 @@ public final class Settings {
             OMNI_SYSTEM_PROXI_CHECK_ENABLED,
             VALIDUS_FOOTER_TEXT_SHOW,
             VALIDUS_FOOTER_TEXT_STRING,
+            QS_PANEL_BG_ALPHA,
         };
 
         /**
@@ -5277,6 +5288,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ENABLE);
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_TIMEOUT);
             PRIVATE_SETTINGS.add(BUTTON_BACKLIGHT_ON_TOUCH_ONLY);
+            PRIVATE_SETTINGS.add(QS_PANEL_BG_ALPHA);
         }
 
         /**
@@ -5400,6 +5412,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_SYSTEM_PROXI_CHECK_ENABLED, OMNI_SYSTEM_PROXI_CHECK_ENABLED_VALIDATOR);
             VALIDATORS.put(VALIDUS_FOOTER_TEXT_SHOW, VALIDUS_FOOTER_TEXT_SHOW_VALIDATOR);
             VALIDATORS.put(VALIDUS_FOOTER_TEXT_STRING, VALIDUS_FOOTER_TEXT_STRING_VALIDATOR);
+            VALIDATORS.put(QS_PANEL_BG_ALPHA, QS_PANEL_BG_ALPHA_VALIDATOR);
         }
 
         /**
