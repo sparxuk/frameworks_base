@@ -5025,6 +5025,15 @@ public final class Settings {
         public static final String SCREEN_STATE_ON_DELAY = "screen_state_on_delay";
 
         /**
+         * Whether to show or hide the running services icon
+         * @hide
+         */
+        public static final String QS_RUNNING_SERVICES_TOGGLE = "qs_running_services_toggle";
+
+        /** @hide */
+        private static final Validator QS_RUNNING_SERVICES_TOGGLE_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5100,7 +5109,8 @@ public final class Settings {
 	    ONE_HAND_MODE_ENABLED,
             SHOW_BATTERY_ESTIMATE_QQS,
             SHOW_LTE_FOURGEE,
-            LESS_BORING_HEADS_UP, 	
+            LESS_BORING_HEADS_UP,
+            QS_RUNNING_SERVICES_TOGGLE,	
         };
 
         /**
@@ -5252,7 +5262,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(SHOW_BATTERY_ESTIMATE_QQS);
             PRIVATE_SETTINGS.add(SHOW_LTE_FOURGEE);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
-            PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP); 
+            PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP);
+            PRIVATE_SETTINGS.add(QS_RUNNING_SERVICES_TOGGLE);
         }
 
         /**
@@ -5371,6 +5382,7 @@ public final class Settings {
             VALIDATORS.put(SHOW_BATTERY_ESTIMATE_QQS, SHOW_BATTERY_ESTIMATE_QQS_VALIDATOR);
             VALIDATORS.put(SHOW_LTE_FOURGEE,SHOW_LTE_FOURGEE_VALIDATOR);
             VALIDATORS.put(LESS_BORING_HEADS_UP,LESS_BORING_HEADS_UP_VALIDATOR); 
+            VALIDATORS.put(QS_RUNNING_SERVICES_TOGGLE,QS_RUNNING_SERVICES_TOGGLE_VALIDATOR);
         }
 
         /**
