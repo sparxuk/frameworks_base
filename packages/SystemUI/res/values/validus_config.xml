@@ -20,7 +20,7 @@
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_extra" translatable="false">
-        music,screenshot,reboot,usb_tether,caffeine,aod
+        music,screenshot,reboot,usb_tether,caffeine,aod,weather
     </string>
 
     <!-- The CPU temperature sensor path, defaults to empty -->

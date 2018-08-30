@@ -5296,6 +5296,15 @@ public final class Settings {
         public static final String OMNI_PULSE_TRIGGER_REASON = "pulse_trigger_reason";
 
         /**
+         * @hide
+         */
+        public static final String OMNIJAWS_WEATHER_ICON_PACK = "omnijaws_weather_icon_pack";
+
+        /** @hide */
+        private static final Validator OMNIJAWS_WEATHER_ICON_PACK_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5408,6 +5417,7 @@ public final class Settings {
             OMNI_AOD_NOTIFICATION_PULSE_TIMEOUT,
             OMNI_NOTIFICATION_PULSE_ACCENT,
             OMNI_NOTIFICATION_PULSE_COLOR,
+            OMNIJAWS_WEATHER_ICON_PACK,
         };
 
         /**
@@ -5574,6 +5584,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_AOD_NOTIFICATION_PULSE_TIMEOUT);
             PRIVATE_SETTINGS.add(OMNI_NOTIFICATION_PULSE_ACCENT);
             PRIVATE_SETTINGS.add(OMNI_NOTIFICATION_PULSE_COLOR);
+            PRIVATE_SETTINGS.add(OMNIJAWS_WEATHER_ICON_PACK);
         }
 
         /**
@@ -5726,6 +5737,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_AOD_NOTIFICATION_PULSE_TIMEOUT, OMNI_AOD_NOTIFICATION_PULSE_TIMEOUT_VALIDATOR);
             VALIDATORS.put(OMNI_NOTIFICATION_PULSE_ACCENT, OMNI_NOTIFICATION_PULSE_ACCENT_VALIDATOR);
             VALIDATORS.put(OMNI_NOTIFICATION_PULSE_COLOR, OMNI_NOTIFICATION_PULSE_COLOR_VALIDATOR);
+            VALIDATORS.put(OMNIJAWS_WEATHER_ICON_PACK, OMNIJAWS_WEATHER_ICON_PACK_VALIDATOR);
         }
 
         /**
