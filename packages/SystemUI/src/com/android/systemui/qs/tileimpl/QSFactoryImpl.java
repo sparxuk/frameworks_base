@@ -226,7 +226,7 @@ public class QSFactoryImpl implements QSFactory {
             case "screenstabilization":
                 return new ScreenStabilizationTile(mHost);
             case "weather":
-                return mWeatherTile.get();
+                return mWeatherTileProvider.get();
         }
 
         // Intent tiles.
