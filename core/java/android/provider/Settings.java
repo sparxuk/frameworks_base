@@ -4306,6 +4306,14 @@ public final class Settings {
         public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
 
         /**
+         * 0 - wallpaper based
+         * 1 - force light
+         * 2 - force dark
+         * @hide
+         */
+        public static final String SYSTEM_THEME = "system_theme";
+
+        /**
          * Toast icon
          * @hide
          */
