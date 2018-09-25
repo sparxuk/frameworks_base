@@ -4314,6 +4314,13 @@ public final class Settings {
         public static final String SYSTEM_THEME = "system_theme";
 
         /**
+         * Select various accents to go along with system themes
+         *
+         * @hide
+         */
+        public static final String ACCENT_PICKER = "accent_picker";
+
+        /**
          * Toast icon
          * @hide
          */
