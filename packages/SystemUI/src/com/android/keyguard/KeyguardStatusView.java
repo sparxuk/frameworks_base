@@ -634,6 +634,10 @@ public class KeyguardStatusView extends GridLayout implements
         mCustomClockView.setDark(dark);
         mDuClockView.setDark(dark);
         updateVisibilities();
+
+        if (mWeatherView != null) {
+            mWeatherView.blendARGB(mDarkAmount);
+        }
     }
 
     private void layoutOwnerInfo() {
