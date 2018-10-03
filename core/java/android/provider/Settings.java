@@ -4791,6 +4791,14 @@ public final class Settings {
         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
 
         /**
+         * @hide
+         */
+        public static final String STATUSBAR_HIDE_NOTCH = "statusbar_hide_notch";
+
+        /** @hide */
+        private static final Validator STATUSBAR_HIDE_NOTCH_VALIDATOR = BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4858,6 +4866,7 @@ public final class Settings {
             TOAST_ICON,
             TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
+            STATUSBAR_HIDE_NOTCH,
             FINGERPRINT_SUCCESS_VIB,
             FORCE_EXPANDED_NOTIFICATIONS,
             OMNI_VOLUME_BUTTON_MUSIC_CONTROL
@@ -5005,6 +5014,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
             PRIVATE_SETTINGS.add(FORCE_EXPANDED_NOTIFICATIONS);
             PRIVATE_SETTINGS.add(OMNI_VOLUME_BUTTON_MUSIC_CONTROL);
+            PRIVATE_SETTINGS.add(STATUSBAR_HIDE_NOTCH);
         }
 
         /**
@@ -5116,6 +5126,7 @@ public final class Settings {
             VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS,FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
             VALIDATORS.put(OMNI_VOLUME_BUTTON_MUSIC_CONTROL,
                     OMNI_VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR);
+            VALIDATORS.put(STATUSBAR_HIDE_NOTCH,STATUSBAR_HIDE_NOTCH_VALIDATOR);
         }
 
         /**
