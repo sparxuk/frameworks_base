@@ -111,4 +111,7 @@
     <!-- signification move threshold - if stays below will trigger action -->
     <integer name="nav_gesture_move_threshold">4</integer>
 
+    <!-- Screen off delay -->
+    <integer name="config_screen_off_delay">1000</integer>
+
 </resources>
