@@ -236,6 +236,9 @@
     <!-- DayNight mode -->
     <uses-permission android:name="android.permission.MODIFY_DAY_NIGHT_MODE" />
 
+    <!-- One-handed mode -->
+    <uses-permission android:name="android.permission.ONE_HANDED_MODE" />
+
     <application
         android:name=".SystemUIApplication"
         android:persistent="true"
