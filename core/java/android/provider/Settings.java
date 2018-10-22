@@ -4373,6 +4373,12 @@ public final class Settings {
         public static final String THREE_FINGER_GESTURE = "three_finger_gesture";
 
         /**
+         * Whether to show VoLTE icon or not
+         * @hide
+         */
+        public static final String SHOW_VOLTE_ICON = "volte_icon";
+
+        /**
          * 0 - wallpaper based
          * 1 - force light
          * 2 - force dark
