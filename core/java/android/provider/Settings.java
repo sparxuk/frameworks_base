@@ -4098,6 +4098,19 @@ public final class Settings {
          * Type: int (0 for false, 1 for true)
          * @hide
          */
+        public static final String TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK = "touchscreen_gesture_haptic_feedback";
+
+        /** @hide */
+        private static final Validator TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /***************************
+         * VALIDUS System Settings end
+         ***************************/
+
+        /**
+         * @hide
+         */
         public static final String NAVIGATION_BAR_ENABLED = "navigation_bar_enabled";
 
         /** @hide */
@@ -4364,6 +4377,7 @@ public final class Settings {
             OMNI_USE_BOTTOM_GESTURE_NAVIGATION,
             OMNI_SHOW_BATTERY_IMAGE,
             TOAST_ICON,
+            TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
         };
 
         /**
@@ -4498,6 +4512,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
             PRIVATE_SETTINGS.add(TOAST_ICON);
+            PRIVATE_SETTINGS.add(TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK);
         }
 
         /**
@@ -4592,6 +4607,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_USE_BOTTOM_GESTURE_NAVIGATION,OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
             VALIDATORS.put(OMNI_SHOW_BATTERY_IMAGE, OMNI_SHOW_BATTERY_IMAGE_VALIDATOR);
             VALIDATORS.put(TOAST_ICON,TOAST_ICON_VALIDATOR);
+            VALIDATORS.put(TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK, TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK_VALIDATOR);
         }
 
         /**
