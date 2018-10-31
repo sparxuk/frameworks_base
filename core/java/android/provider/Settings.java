@@ -4396,6 +4396,11 @@ public final class Settings {
         public static final String POWERMENU_SETTINGS = "powermenu_settings";
 
         /**
+         * @hide
+         */
+        public static final String FULL_GESTURE_NAVBAR = "full_gesture_navbar";
+
+        /**
          * Whether to display reboot in the power menu
          *
          * @hide
