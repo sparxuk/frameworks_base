@@ -4109,9 +4109,9 @@ public class StatusBar extends SystemUI implements DemoMode,
         ThemeAccentUtils.updateTileStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), qsTileStyle);
     }
 
-    // Unload all qs tile styles back to stock
-    public void stockTileStyle() {
-        ThemeAccentUtils.stockTileStyle(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
+    // Unload all the qs tile styles
+    public void unlockQsTileStyles() {
+        ThemeAccentUtils.unlockQsTileStyles(mOverlayManager, mLockscreenUserManager.getCurrentUserId());
     }
 
     private void updateDozingState() {
@@ -5353,7 +5353,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                 updateAccents(); // Update the accents when users request it
             } else if (uri.equals(Settings.System.getUriFor(
                     Settings.System.QS_TILE_STYLE))) {
-                stockTileStyle();
+                unlockQsTileStyles();
                 updateTileStyle();   
             } else if (uri.equals(Settings.Secure.getUriFor(
                     Settings.Secure.FP_SWIPE_TO_DISMISS_NOTIFICATIONS))) {
