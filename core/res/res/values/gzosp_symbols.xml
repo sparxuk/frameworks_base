@@ -94,4 +94,7 @@
     <java-symbol type="color" name="autofill_autofill_save_custom_subtitle_color" />
 
     <java-symbol type="bool" name="config_enableScreenrecordChord" />
+    
+    <!-- System fonts -->
+    <java-symbol type="array" name="config_fontPackages" />
 </resources>
