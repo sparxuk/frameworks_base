@@ -5034,6 +5034,17 @@ public final class Settings {
         private static final Validator QS_RUNNING_SERVICES_TOGGLE_VALIDATOR = BOOLEAN_VALIDATOR;
 
         /**
+         * Settings dashboard icon style
+         * @hide
+         */
+        public static final String THEMING_SETTINGS_DASHBOARD_ICONS =
+                "theming_settings_dashboard_icons";
+
+        /** @hide */
+        public static final Validator THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5110,7 +5121,8 @@ public final class Settings {
             SHOW_BATTERY_ESTIMATE_QQS,
             SHOW_LTE_FOURGEE,
             LESS_BORING_HEADS_UP,
-            QS_RUNNING_SERVICES_TOGGLE,	
+            QS_RUNNING_SERVICES_TOGGLE,
+            THEMING_SETTINGS_DASHBOARD_ICONS,
         };
 
         /**
@@ -5264,6 +5276,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
             PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP);
             PRIVATE_SETTINGS.add(QS_RUNNING_SERVICES_TOGGLE);
+            PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
         }
 
         /**
@@ -5383,6 +5396,8 @@ public final class Settings {
             VALIDATORS.put(SHOW_LTE_FOURGEE,SHOW_LTE_FOURGEE_VALIDATOR);
             VALIDATORS.put(LESS_BORING_HEADS_UP,LESS_BORING_HEADS_UP_VALIDATOR); 
             VALIDATORS.put(QS_RUNNING_SERVICES_TOGGLE,QS_RUNNING_SERVICES_TOGGLE_VALIDATOR);
+            VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS,
+                    THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
         }
 
         /**
@@ -14580,4 +14595,3 @@ public final class Settings {
         return packages[0];
     }
 }
-
