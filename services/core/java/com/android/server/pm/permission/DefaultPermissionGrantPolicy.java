@@ -865,6 +865,13 @@ public final class DefaultPermissionGrantPolicy {
         if (googleSoundPackage != null) {
             grantRuntimePermissions(googleSoundPackage, STORAGE_PERMISSIONS, true, userId);
         }
+
+        // Mediascanner
+        PackageParser.Package mediascannerPackage = getDefaultProviderAuthorityPackage(
+                "com.android.providers.media.MediaProvider", userId);
+        if (mediascannerPackage != null) {
+            grantRuntimePermissions(mediascannerPackage, STORAGE_PERMISSIONS, true, userId);
+        }
     }
 
     private void grantDefaultPermissionsToDefaultSystemDialerApp(
