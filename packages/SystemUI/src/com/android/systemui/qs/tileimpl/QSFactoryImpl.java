@@ -39,6 +39,7 @@ import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
+import com.android.systemui.qs.tiles.ScreenrecordTile;
 import com.android.systemui.qs.tiles.ThemeTile;
 import com.android.systemui.qs.tiles.UserTile;
 import com.android.systemui.qs.tiles.WifiTile;
@@ -102,6 +103,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new NfcTile(mHost);
             case "immersive":
                 return new ImmersiveTile(mHost);
+            case "screenrecord":
+                return new ScreenrecordTile(mHost);
             case "theme":
                 return new ThemeTile(mHost);
         }
