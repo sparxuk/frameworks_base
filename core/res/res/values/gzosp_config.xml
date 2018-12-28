@@ -89,6 +89,9 @@
     <!-- Internal default to navigation bar value -->
     <bool name="config_defaultToNavigationBar">true</bool>
 
+    <!-- If this is true, key chords can be used to take a screen record on the device. -->
+    <bool name="config_enableScreenrecordChord">true</bool>
+
     <!-- True if the notification's dynamic app icon/title tint should be optimised for dark
     backgrounds (requires config_allowNotificationIconTextTinting to be true)-->
     <bool name="config_useDarkBgNotificationIconTextTinting">false</bool>

@@ -38,6 +38,7 @@ public class NotificationChannels extends SystemUI {
     public static String TVPIP       = "TPP";
     public static String BATTERY     = "BAT";
     public static String HINTS       = "HNT";
+    public static String SCREENRECORDS = "SCR";
 
     public static void createAll(Context context) {
         final NotificationManager nm = context.getSystemService(NotificationManager.class);
@@ -68,7 +69,12 @@ public class NotificationChannels extends SystemUI {
                 isTv(context)
                         ? NotificationManager.IMPORTANCE_DEFAULT
                         : NotificationManager.IMPORTANCE_LOW);
-
+						
+        final NotificationChannel screenrecords = new NotificationChannel(
+        		SCREENRECORDS,
+                context.getString(R.string.notification_channel_screenrecord),
+                NotificationManager.IMPORTANCE_LOW);
+						
         final NotificationChannel hint = new NotificationChannel(
                 HINTS,
                 context.getString(R.string.notification_channel_hints),
