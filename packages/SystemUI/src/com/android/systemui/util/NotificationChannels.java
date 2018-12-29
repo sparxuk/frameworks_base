@@ -89,6 +89,7 @@ public class NotificationChannels extends SystemUI {
                         context.getString(R.string.notification_channel_screenshot),
                         nm.getNotificationChannel(SCREENSHOTS_LEGACY)),
                 batteryChannel,
+                screenrecords,
                 hint
         ));
 
