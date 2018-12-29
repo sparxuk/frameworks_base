@@ -4378,6 +4378,11 @@ public final class Settings {
          */
         public static final String STATUS_BAR_LOGO = "status_bar_logo";
 
+        /**
+        * Statusbar logo Style
+        * @hide
+         */
+        public static final String STATUS_BAR_LOGO_STYLE = "status_bar_logo_style";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
