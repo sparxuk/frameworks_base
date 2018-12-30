@@ -49,6 +49,8 @@ import android.widget.ImageView;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuff.Mode;
 
 /**
  * Contains the collapsed status bar and handles hiding/showing based on disable flags
@@ -76,6 +78,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private ImageView mValidusLogo;
     private int mLogoStyle;
     private boolean mShowLogo;
+    private int mLogoColor;
     private final Handler mHandler = new Handler();
 
     private class ValidusSettingsObserver extends ContentObserver {
@@ -89,6 +92,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     false, this, UserHandle.USER_ALL);
             getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO_STYLE),
+                    false, this, UserHandle.USER_ALL);
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_LOGO_COLOR),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -383,6 +389,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mShowLogo = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
                 UserHandle.USER_CURRENT) == 1;
+        mLogoColor = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO_COLOR, 0xff009688,
+                UserHandle.USER_CURRENT);
         mLogoStyle = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO_STYLE, 0,
                 UserHandle.USER_CURRENT);
@@ -425,6 +434,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 return;
             }
             mValidusLogo.setImageDrawable(logo);
+            mValidusLogo.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
         }
         if (mNotificationIconAreaInner != null) {
             if (mShowLogo) {
