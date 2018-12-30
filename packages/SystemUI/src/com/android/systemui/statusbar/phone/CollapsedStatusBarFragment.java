@@ -386,6 +386,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void updateSettings(boolean animate) {
         Drawable logo = null;
+
+        if (mStatusBar == null) return;
         mShowLogo = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
                 UserHandle.USER_CURRENT) == 1;
@@ -396,34 +398,31 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO_STYLE, 0,
                 UserHandle.USER_CURRENT);
 
-                switch(mLogoStyle) {
-                // Wolf Shield
-            case 0:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
-                break;
+        switch(mLogoStyle) {
                 // GZR Skull
             case 1:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_skull_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_gzr_skull_logo);
                 break;
                 // GZR Circle
             case 2:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_circle_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_gzr_circle_logo);
                 break;
                 // GZR Clown
             case 3:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_clown_logo);
                 break;
                 // Running Wolf
             case 4:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_running_wolf_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_running_wolf_logo);
                 break;
                 // Oreo Wolf
             case 5:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
-                break;				
+                logo = getContext().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
+                break;
                 // Default
+            case 0:
             default:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_logo);
                 break;
         }
 
@@ -433,9 +432,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 mValidusLogo.setImageDrawable(logo);
                 return;
             }
+
             mValidusLogo.setImageDrawable(logo);
             mValidusLogo.setColorFilter(mLogoColor, PorterDuff.Mode.MULTIPLY);
         }
+
         if (mNotificationIconAreaInner != null) {
             if (mShowLogo) {
                 if (mNotificationIconAreaInner.getVisibility() == View.VISIBLE) {
