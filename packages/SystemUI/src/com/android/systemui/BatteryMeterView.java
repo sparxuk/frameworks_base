@@ -88,6 +88,8 @@ public class BatteryMeterView extends LinearLayout implements
     private int mStyle = BatteryMeterDrawableBase.BATTERY_STYLE_PORTRAIT;
     private boolean mCharging;
 
+    private final int mEndPadding;
+    private final int mEndPaddingNoIcon;
 
     /**
      * Whether we should use colors that adapt based on wallpaper/the scrim behind quick settings.
@@ -108,7 +110,8 @@ public class BatteryMeterView extends LinearLayout implements
     public BatteryMeterView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-
+        Resources res = getResources();
+		
         setOrientation(LinearLayout.HORIZONTAL);
         setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
 
@@ -137,6 +140,9 @@ public class BatteryMeterView extends LinearLayout implements
                 getResources().getDimensionPixelOffset(R.dimen.battery_margin_bottom));
         addView(mBatteryIconView, mlp);
 
+        mEndPadding = res.getDimensionPixelSize(R.dimen.battery_level_padding_start);
+        mEndPaddingNoIcon = res.getDimensionPixelSize(
+                R.dimen.battery_level_padding_start_no_icon);
         updateShowPercent();
         setColorsFromContext(context);
         // Init to not dark at all.
@@ -281,7 +287,7 @@ public class BatteryMeterView extends LinearLayout implements
         final boolean showPercentView =
                 0 != Settings.System.getIntForUser(getContext().getContentResolver(),
                 SHOW_BATTERY_PERCENT, 1, mUser);
-        if (showPercentView || mForceShowPercent) {
+        if (mStyle != BatteryMeterDrawableBase.BATTERY_STYLE_HIDDEN && (showPercentView || mForceShowPercent)) {
 
             if (!showing) {
                 mBatteryPercentView = loadPercentView();
@@ -297,6 +303,10 @@ public class BatteryMeterView extends LinearLayout implements
                 removeView(mBatteryPercentView);
                 mBatteryPercentView = null;
             }
+        }
+        if (mBatteryPercentView != null) {
+            mBatteryPercentView.setPaddingRelative(0, 0,
+                    mStyle == BatteryMeterDrawableBase.BATTERY_STYLE_TEXT ? mEndPaddingNoIcon : mEndPadding, 0);
         }
 		        mDrawable.showPercentInsideCircle(!showPercentView);
     }
