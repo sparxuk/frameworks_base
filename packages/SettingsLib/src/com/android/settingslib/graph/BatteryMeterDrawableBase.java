@@ -50,6 +50,7 @@ public class BatteryMeterDrawableBase extends Drawable {
     public static final int BATTERY_STYLE_PORTRAIT = 0;
     public static final int BATTERY_STYLE_LANDSCAPE = 1;
     public static final int BATTERY_STYLE_CIRCLE = 2;
+    public static final int BATTERY_STYLE_DOTTED_CIRCLE = 3;
 	
     protected final Context mContext;
     protected final Paint mFramePaint;
@@ -104,6 +105,8 @@ public class BatteryMeterDrawableBase extends Drawable {
     private final Path mOutlinePath = new Path();
     private final Path mClipPath = new Path();
     private final Path mTextPath = new Path();
+	
+    private DashPathEffect mPathEffect;
 
     public BatteryMeterDrawableBase(Context context, int frameColor) {
         mContext = context;
@@ -164,6 +167,8 @@ public class BatteryMeterDrawableBase extends Drawable {
         mPlusPaint.setColor(Utils.getDefaultColor(mContext, R.color.batterymeter_plus_color));
         mPlusPoints = loadPoints(res, R.array.batterymeter_plus_points);
 
+        mPathEffect = new DashPathEffect(new float[]{3,2},0);
+		
         mPowersavePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPowersavePaint.setColor(mPlusPaint.getColor());
         mPowersavePaint.setStyle(Style.STROKE);
@@ -339,6 +344,7 @@ public class BatteryMeterDrawableBase extends Drawable {
                 drawRectangle(c, true);
                 break;
             case BATTERY_STYLE_CIRCLE:
+            case BATTERY_STYLE_DOTTED_CIRCLE:
                 drawCircle(c);
                 break;
             default:
@@ -569,6 +575,13 @@ public class BatteryMeterDrawableBase extends Drawable {
 
         mBatteryPaint.setStrokeWidth(strokeWidth);
         mBatteryPaint.setStyle(Paint.Style.STROKE);
+
+        if (mMeterStyle == BATTERY_STYLE_DOTTED_CIRCLE) {
+            mBatteryPaint.setPathEffect(mPathEffect);
+        } else {
+            mBatteryPaint.setPathEffect(null);
+        }
+
 
         mFrame.set(
                 strokeWidth / 2.0f + mPadding.left,
