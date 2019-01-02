@@ -27413,4 +27413,9 @@ public class ActivityManagerService extends IActivityManager.Stub
             return mIsSwipeToScrenshotEnabled;
         }
     }
+
+    Context getContext() {
+        return mContext;
+    }
+
 }
