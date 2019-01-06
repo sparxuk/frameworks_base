@@ -394,6 +394,14 @@ public interface WindowManager extends ViewManager {
      * @hide
      */
     final int TAKE_SCREENSHOT_SELECTED_REGION = 2;
+	
+	 /**
+     * Messages for starting a screen record session
+     * @hide
+     */
+    final int SCREEN_RECORD_LOW_QUALITY = 0;
+    final int SCREEN_RECORD_MID_QUALITY = 1;
+    final int SCREEN_RECORD_HIGH_QUALITY = 2;
 
     /**
      * @hide

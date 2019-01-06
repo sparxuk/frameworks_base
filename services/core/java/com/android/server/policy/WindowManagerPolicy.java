@@ -1750,6 +1750,11 @@ public interface WindowManagerPolicy extends WindowManagerPolicyConstants {
      * @return true if ready; false otherwise.
      */
     boolean canDismissBootAnimation();
+	
+	/**
+     * Call screen record from WindowManager.
+     */
+    public void screenRecordAction(int mode);
 
     /**
      * Convert the user rotation mode to a human readable format.
