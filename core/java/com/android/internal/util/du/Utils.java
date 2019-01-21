@@ -167,8 +167,6 @@ public class Utils {
             }
         }
     }
-      }
-    }
 
     // Method to take screenshots
     public static void takeScreenshot(boolean full) {
@@ -177,7 +175,7 @@ public class Utils {
             wm.sendCustomAction(new Intent(full? INTENT_SCREENSHOT : INTENT_REGION_SCREENSHOT));
         } catch (RemoteException e) {
             e.printStackTrace();
-}
+        }
     }
 
     public static void sendKeycode(int keycode) {
@@ -202,3 +200,5 @@ public class Utils {
                         InputManager.INJECT_INPUT_EVENT_MODE_ASYNC);
             }
         }, 20);
+    }
+}
