@@ -219,6 +219,11 @@ public class KeyguardStatusView extends GridLayout implements
         mDuClockView.onThemeChanged(useDarkTheme, true);
     }
 
+    public void onBlackThemeChanged(boolean useBlackTheme) {
+        mCustomClockView.onBlackThemeChanged(useBlackTheme, true);
+        mDuClockView.onBlackThemeChanged(useBlackTheme, true);
+    }
+	
     /**
      * Moves clock and separator, adjusting margins when slice content changes.
      */

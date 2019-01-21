@@ -3943,6 +3943,7 @@ public class StatusBar extends SystemUI implements DemoMode,
 
         if (isUsingBlackTheme() != useBlackTheme) {
             ThemeAccentUtils.setLightBlackTheme(mOverlayManager, mLockscreenUserManager.getCurrentUserId(), useBlackTheme);
+                mNotificationPanel.setLockscreenClockBlackTheme(useBlackTheme);
         }
         // Lock wallpaper defines the color of the majority of the views, hence we'll use it
         // to set our default theme.
