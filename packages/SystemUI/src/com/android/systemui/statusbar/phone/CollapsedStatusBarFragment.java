@@ -80,6 +80,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     // Validus logo
     private ImageView mValidusLogo;
     private int mLogoStyle;
+    // Custom Carrier
+    private View mCustomCarrierLabel;
+    private int mShowCarrierLabel;
     private boolean mShowLogo;
     private int mLogoColor;
     private final Handler mHandler = new Handler();
@@ -98,6 +101,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     false, this, UserHandle.USER_ALL);
             getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO_COLOR),
+                    false, this, UserHandle.USER_ALL);
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_CARRIER),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -149,6 +155,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mSystemIconArea = mStatusBar.findViewById(R.id.system_icon_area);
         mClockView = (Clock) mStatusBar.findViewById(R.id.clock);
         mValidusLogo = mStatusBar.findViewById(R.id.status_bar_logo);
+        mCustomCarrierLabel = mStatusBar.findViewById(R.id.statusbar_carrier_text);
         updateSettings(false);
         updateLogoSettings(false);
         showSystemIconArea(false);
@@ -417,7 +424,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (getContext() == null) {
             return;
         }
-    }
+        mShowCarrierLabel = Settings.System.getIntForUser(
+        		getContext().getContentResolver(), Settings.System.STATUS_BAR_CARRIER, 1,
+                UserHandle.USER_CURRENT);
+        }
 
     // Let's separate out LOGO updates exclusively.
     public void updateLogoSettings(boolean animate) {
