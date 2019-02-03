@@ -42,7 +42,6 @@ import com.android.systemui.qs.tiles.RotationLockTile;
 import com.android.systemui.qs.tiles.ScreenrecordTile;
 import com.android.systemui.qs.tiles.ThemeTile;
 import com.android.systemui.qs.tiles.UserTile;
-import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.qs.QSTileHost;
@@ -107,9 +106,7 @@ public class QSFactoryImpl implements QSFactory {
             case "screenrecord":
                 return new ScreenrecordTile(mHost);
             case "theme":
-                return new ThemeTile(mHost);
-            case "weather":
-                return new WeatherTile(mHost);
+                return new ThemeTile(mHost);            
         }
 
         // Intent tiles.
