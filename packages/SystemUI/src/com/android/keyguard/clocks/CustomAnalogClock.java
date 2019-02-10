@@ -74,7 +74,6 @@ public class CustomAnalogClock extends View {
     private float mHour;
     private boolean mChanged;
     private boolean mUseDarkTheme;
-    private boolean mUseBlackTheme;
 
     private IOverlayManager mOverlayManager;
 
@@ -113,10 +112,6 @@ public class CustomAnalogClock extends View {
                 mOverlayManager, ActivityManager.getCurrentUser());
         onThemeChanged(useDarkTheme, false);
 
-        final boolean useBlackTheme = ThemeAccentUtils.isUsingBlackTheme(
-                mOverlayManager, ActivityManager.getCurrentUser());
-        onBlackThemeChanged(useBlackTheme, false);
-
         mDialAmbient = a.getDrawable(R.styleable.CustomAnalogClock_custom_clock_dial_ambient);
 
         a.recycle();
@@ -130,14 +125,6 @@ public class CustomAnalogClock extends View {
     public void onThemeChanged(boolean useDarkTheme, boolean forceInvalidate) {
         mUseDarkTheme = useDarkTheme;
         mDial = useDarkTheme ? mDialDark : mDialLight;
-        if (forceInvalidate) {
-            invalidate();
-        }
-	}
-	
-    public void onBlackThemeChanged(boolean useBlackTheme, boolean forceInvalidate) {
-        mUseBlackTheme = useBlackTheme;
-        mDial = useBlackTheme ? mDialDark : mDialLight;
         if (forceInvalidate) {
             invalidate();
         }

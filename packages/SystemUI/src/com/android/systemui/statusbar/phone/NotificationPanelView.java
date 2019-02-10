@@ -406,10 +406,6 @@ public class NotificationPanelView extends PanelView implements
         mKeyguardStatusView.onThemeChanged(useDarkTheme);
     }
 
-    public void setLockscreenClockBlackTheme(boolean useBlackTheme) {
-        mKeyguardStatusView.onBlackThemeChanged(useBlackTheme);
-    }
-	
     public void onThemeChanged() {
         mQsNavbarScrim.setBackground(getResources().getDrawable(R.drawable.qs_navbar_scrim));
 
