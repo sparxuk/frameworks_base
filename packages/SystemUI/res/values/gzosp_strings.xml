@@ -61,4 +61,7 @@
     <string name="navbar_editor_title">Editor</string>
     <string name="navbar_editor_summary">Configure navigaton bar</string>
 
+    <!-- Lockscreen Charging -->
+    <string name="tuner_keyguard_show_watt_title">Show charging watt</string>
+    <string name="tuner_keyguard_show_watt_summary">Show charging watt value in mW</string>
 </resources>
