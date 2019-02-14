@@ -144,4 +144,7 @@
     <!-- Whether device has a physical display cutout -->
     <bool name="config_physicalDisplayCutout">false</bool>
 
+    <!-- Whether to enable oneplus cam hack -->
+    <bool name="config_enableOPcamhack">false</bool>
+
 </resources>
