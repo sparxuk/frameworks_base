@@ -307,10 +307,6 @@
                   android:label="@string/system_ui_tuner"
                   android:process=":tuner"
                   android:exported="true">
-            <intent-filter>
-                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
             <intent-filter android:priority="0">
                 <action android:name="com.android.settings.action.SETTINGS" />
             </intent-filter>
