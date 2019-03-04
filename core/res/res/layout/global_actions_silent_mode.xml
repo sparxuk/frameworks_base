@@ -17,87 +17,134 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     >
 
     <LinearLayout
         android:id="@+id/option1"
-        android:layout_width="64dp"
-        android:layout_height="match_parent"
-        android:background="?android:attr/actionBarItemBackground"
+        android:layout_width="24dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/silent_mode_silent"
         android:focusable="true"
+        android:background="@drawable/silent_mode_indicator"
         >
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/ic_audio_ring_notif_mute"
             android:scaleType="center"
             android:duplicateParentState="true"
-            android:background="@drawable/silent_mode_indicator"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/textoption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:text="@string/silent_mute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
+    </LinearLayout>
+
     <!-- Spacer -->
-    <View android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+    <View android:layout_width="24dp"
+        android:layout_height="5dp"
         android:visibility="invisible"/>
 
     <LinearLayout
         android:id="@+id/option2"
-        android:layout_width="64dp"
-        android:layout_height="match_parent"
-        android:background="?android:attr/actionBarItemBackground"
+        android:layout_width="24dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/silent_mode_vibrate"
         android:focusable="true"
+        android:background="@drawable/silent_mode_indicator"
         >
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/ic_audio_ring_notif_vibrate"
             android:scaleType="center"
             android:duplicateParentState="true"
-            android:background="@drawable/silent_mode_indicator"
             />
     </LinearLayout>
-
+    <LinearLayout
+        android:id="@+id/textoption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:text="@string/silent_vibe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            />
+    </LinearLayout>
     <!-- Spacer -->
-    <View android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+    <View android:layout_width="24dp"
+        android:layout_height="5dp"
         android:visibility="invisible"/>
 
     <LinearLayout
         android:id="@+id/option3"
-        android:layout_width="64dp"
-        android:layout_height="match_parent"
-        android:background="?android:attr/actionBarItemBackground"
+        android:layout_width="24dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
         android:contentDescription="@string/silent_mode_ring"
         android:focusable="true"
+        android:background="@drawable/silent_mode_indicator"
         >
         <ImageView
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
+            android:layout_width="24dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
             android:src="@drawable/ic_audio_ring_notif"
             android:scaleType="center"
             android:duplicateParentState="true"
-            android:background="@drawable/silent_mode_indicator"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/textoption3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:text="@string/silent_ring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             />
     </LinearLayout>
 </LinearLayout>
