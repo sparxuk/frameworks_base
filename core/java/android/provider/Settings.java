@@ -4420,6 +4420,13 @@ public final class Settings {
         public static final String POWERMENU_SILENT = "powermenu_silent";
 
         /**
+         * Whether to display settings in the power menu
+         *
+         * @hide
+         */
+        public static final String POWERMENU_AIRPLANE = "powermenu_airplane";
+
+        /**
          * @hide
          */
         public static final String FULL_GESTURE_NAVBAR = "full_gesture_navbar";

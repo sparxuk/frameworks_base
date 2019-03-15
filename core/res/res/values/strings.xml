@@ -531,13 +531,13 @@
     <string name="global_action_silent_mode_off_status">Sound is ON</string>
 
     <!-- label for item that toggles airplane mode -->
-    <string name="global_actions_toggle_airplane_mode">Airplane mode</string>
+    <string name="global_actions_toggle_airplane_mode">Airplane</string>
 
     <!-- status message in phone options dialog for when airplane mode is on -->
-    <string name="global_actions_airplane_mode_on_status">Airplane mode is ON</string>
+    <string name="global_actions_airplane_mode_on_status">On</string>
 
     <!-- status message in phone options dialog for when airplane mode is off -->
-    <string name="global_actions_airplane_mode_off_status">Airplane mode is OFF</string>
+    <string name="global_actions_airplane_mode_off_status">Off</string>
 
     <!-- label for item that enables battery saver in phone options dialog -->
     <string name="global_action_toggle_battery_saver">Battery saver</string>
