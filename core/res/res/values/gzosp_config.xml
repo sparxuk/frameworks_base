@@ -133,4 +133,9 @@
     Set to -1 to disable the proximity sensor check at all-->
     <integer name="config_flashlightProximityTimeout">300</integer>
 
+    <!-- Show a custom view for FOD -->
+    <bool name="config_needCustomFODView">false</bool>
+
+    <bool name="config_usesOnePlusFOD">false</bool>
+
 </resources>

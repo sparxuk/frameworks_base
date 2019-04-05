@@ -105,4 +105,8 @@
 
     <java-symbol type="string" name="fontservice_incompatible_font" />
 
+    <!-- FoD -->
+    <java-symbol type="bool" name="config_needCustomFODView" />
+    <java-symbol type="bool" name="config_usesOnePlusFOD" />
+
 </resources>
