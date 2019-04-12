@@ -4146,6 +4146,15 @@ public final class Settings {
             new SettingsValidators.InclusiveIntegerRangeValidator(0, 255);
 
         /**
+         * @hide
+         */
+        public static final String OMNI_CUSTOM_FP_ICON = "custom_fingerprint_icon";
+
+        /** @hide */
+        private static final Validator OMNI_CUSTOM_FP_ICON_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
          * Whether user can enable/disable button brightness.
          * <p>
          * Type: int (0 for false, 1 for true)
@@ -4784,6 +4793,7 @@ public final class Settings {
             HAPTIC_FEEDBACK_INTENSITY,
             DISPLAY_COLOR_MODE,
             NOTIFICATION_LIGHT_PULSE,
+            OMNI_CUSTOM_FP_ICON,
             OMNI_BOTTOM_GESTURE_TRIGGER_TIMEOUT,
             OMNI_BOTTOM_GESTURE_SWIPE_LIMIT,
             OMNIJAWS_WEATHER_ICON_PACK,
@@ -4925,6 +4935,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_USE_BOTTOM_GESTURE_NAVIGATION);
             PRIVATE_SETTINGS.add(OMNI_BOTTOM_GESTURE_TRIGGER_TIMEOUT);
             PRIVATE_SETTINGS.add(OMNI_BOTTOM_GESTURE_SWIPE_LIMIT);
+            PRIVATE_SETTINGS.add(OMNI_CUSTOM_FP_ICON);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_STATE);
             PRIVATE_SETTINGS.add(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
             PRIVATE_SETTINGS.add(TOAST_ICON);
@@ -5028,6 +5039,8 @@ public final class Settings {
             VALIDATORS.put(BUTTON_BRIGHTNESS, BUTTON_BRIGHTNESS_VALIDATOR);
             VALIDATORS.put(BUTTON_BRIGHTNESS_ENABLED, BUTTON_BRIGHTNESS_ENABLED_VALIDATOR);
             VALIDATORS.put(OMNI_USE_BOTTOM_GESTURE_NAVIGATION,OMNI_USE_BOTTOM_GESTURE_NAVIGATION_VALIDATOR);
+            VALIDATORS.put(OMNI_CUSTOM_FP_ICON,
+                    OMNI_CUSTOM_FP_ICON_VALIDATOR);
             VALIDATORS.put(OMNI_BOTTOM_GESTURE_TRIGGER_TIMEOUT,
                     OMNI_BOTTOM_GESTURE_TRIGGER_TIMEOUT_VALIDATOR);
             VALIDATORS.put(OMNI_BOTTOM_GESTURE_SWIPE_LIMIT,
