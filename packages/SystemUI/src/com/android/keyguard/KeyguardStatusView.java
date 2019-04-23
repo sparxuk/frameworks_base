@@ -480,6 +480,11 @@ public class KeyguardStatusView extends GridLayout implements
     }
 
     private void updateVisibilities() {
+        mClockView.setVisibility(View.GONE);
+        mCustomClockView.setVisibility(View.GONE);
+        mTextClock.setVisibility(View.GONE);
+        final int mClockVisibility = mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
+                       View.GONE) : View.VISIBLE;
         switch (mClockSelection) {
             case 0: // default digital
             default:
@@ -539,12 +544,13 @@ public class KeyguardStatusView extends GridLayout implements
         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                 mKeyguardSlice.getLayoutParams();
         switch (mClockSelection) {
-            case 0: // default digital
-            default:
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(true);
-                mClockView.setGravity(Gravity.CENTER);
+            case 2: // custom analog
+                params.addRule(RelativeLayout.BELOW, R.id.custom_clock_view);
                 break;
+            case 9: // custom text clock
+                params.addRule(RelativeLayout.BELOW, R.id.custom_textclock_view);
+                break;
+            case 0: // default digital
             case 1: // digital (bold)
             case 7: // digital (accent full)
             case 8: // digital (accent hour)
@@ -552,9 +558,6 @@ public class KeyguardStatusView extends GridLayout implements
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(true);
                 mClockView.setGravity(Gravity.CENTER);
-                break;
-            case 2: // custom analog
-                params.addRule(RelativeLayout.BELOW, R.id.custom_clock_view);
                 break;
             case 3: // sammy
             case 4: // sammy (bold)
@@ -566,10 +569,8 @@ public class KeyguardStatusView extends GridLayout implements
                 mClockView.setSingleLine(false);
                 mClockView.setGravity(Gravity.CENTER);
                 break;
-            case 9: // custom text clock
-                params.addRule(RelativeLayout.BELOW, R.id.custom_textclock_view);
-                break;
         }
+        mKeyguardSlice.setLayoutParams(params);
 
         updateVisibilities();
         updateDozeVisibleViews();
