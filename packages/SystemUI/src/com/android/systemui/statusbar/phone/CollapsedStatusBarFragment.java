@@ -22,6 +22,7 @@ import android.annotation.Nullable;
 import android.app.Fragment;
 import android.app.StatusBarManager;
 import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -101,7 +102,12 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         }
 
         @Override
-        public void onChange(boolean selfChange) {
+        public void onChange(boolean selfChange, Uri uri) {
+            if ((uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO))) ||
+                (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_STYLE))) ||
+                (uri.equals(Settings.System.getUriFor(Settings.System.STATUS_BAR_LOGO_COLOR)))){
+                updateLogoSettings(true);
+            }
             updateSettings(true);
         }
     }
@@ -144,6 +150,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mClockView = (Clock) mStatusBar.findViewById(R.id.clock);
         mValidusLogo = mStatusBar.findViewById(R.id.status_bar_logo);
         updateSettings(false);
+        updateLogoSettings(false);
         showSystemIconArea(false);
         showClock(false);
         initEmergencyCryptkeeperText();
@@ -404,9 +411,23 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void updateSettings(boolean animate) {
+
+        if (mStatusBar == null) return;
+
+        if (getContext() == null) {
+            return;
+        }
+    }
+
+    // Let's separate out LOGO updates exclusively.
+    public void updateLogoSettings(boolean animate) {
         Drawable logo = null;
 
         if (mStatusBar == null) return;
+
+        if (getContext() == null) {
+            return;
+        }
         mShowLogo = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
                 UserHandle.USER_CURRENT) == 1;
