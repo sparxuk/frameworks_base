@@ -4791,14 +4791,6 @@ public final class Settings {
         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
 
         /**
-         * @hide
-         */
-        public static final String STATUSBAR_HIDE_NOTCH = "statusbar_hide_notch";
-
-        /** @hide */
-        private static final Validator STATUSBAR_HIDE_NOTCH_VALIDATOR = BOOLEAN_VALIDATOR;
-
-        /**
          * Control how to handle the display cutout
          * @hide
          */
@@ -4922,7 +4914,6 @@ public final class Settings {
             TOAST_ICON,
             TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
-            STATUSBAR_HIDE_NOTCH,
             FINGERPRINT_SUCCESS_VIB,
             DISPLAY_CUTOUT_MODE,
             STOCK_STATUSBAR_IN_HIDE,
@@ -5072,7 +5063,6 @@ public final class Settings {
             PRIVATE_SETTINGS.add(NOTIFICATION_SOUND_VIB_SCREEN_ON);
             PRIVATE_SETTINGS.add(FORCE_EXPANDED_NOTIFICATIONS);
             PRIVATE_SETTINGS.add(OMNI_VOLUME_BUTTON_MUSIC_CONTROL);
-            PRIVATE_SETTINGS.add(STATUSBAR_HIDE_NOTCH);
             PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
         }
@@ -5186,7 +5176,6 @@ public final class Settings {
             VALIDATORS.put(FORCE_EXPANDED_NOTIFICATIONS,FORCE_EXPANDED_NOTIFICATIONS_VALIDATOR);
             VALIDATORS.put(OMNI_VOLUME_BUTTON_MUSIC_CONTROL,
                     OMNI_VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR);
-            VALIDATORS.put(STATUSBAR_HIDE_NOTCH,STATUSBAR_HIDE_NOTCH_VALIDATOR);
             VALIDATORS.put(DISPLAY_CUTOUT_MODE, DISPLAY_CUTOUT_MODE_VALIDATOR);
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
         }
