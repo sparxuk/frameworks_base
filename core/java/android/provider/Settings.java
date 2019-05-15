@@ -4841,6 +4841,15 @@ public final class Settings {
 	
         /** @hide */
 	private static final Validator ONE_HAND_MODE_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+	/**
+         * @hide
+         */
+        public static final String SHOW_BATTERY_ESTIMATE_QQS = "show_battery_estimate_qqs";
+
+        /** @hide */
+        private static final Validator SHOW_BATTERY_ESTIMATE_QQS_VALIDATOR =
+                BOOLEAN_VALIDATOR;
         
 	/** @hide */
         private static final Validator STOCK_STATUSBAR_IN_HIDE_VALIDATOR =
@@ -4978,6 +4987,7 @@ public final class Settings {
             FORCE_EXPANDED_NOTIFICATIONS,
             QS_SMART_PULLDOWN,
 	    ONE_HAND_MODE_ENABLED,
+	    SHOW_BATTERY_ESTIMATE_QQS,	
         };
 
         /**
@@ -5126,6 +5136,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
             PRIVATE_SETTINGS.add(QS_SMART_PULLDOWN);
 	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
+            PRIVATE_SETTINGS.add(SHOW_BATTERY_ESTIMATE_QQS);
         }
 
         /**
@@ -5241,6 +5252,7 @@ public final class Settings {
             VALIDATORS.put(STOCK_STATUSBAR_IN_HIDE, STOCK_STATUSBAR_IN_HIDE_VALIDATOR);
             VALIDATORS.put(QS_SMART_PULLDOWN,QS_SMART_PULLDOWN_VALIDATOR);
 	    VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
+            VALIDATORS.put(SHOW_BATTERY_ESTIMATE_QQS, SHOW_BATTERY_ESTIMATE_QQS_VALIDATOR);
         }
 
         /**
