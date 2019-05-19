@@ -404,6 +404,12 @@ public class KeyguardStatusView extends GridLayout implements
         } else if (mClockSelection == 12) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>h</strong><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "> mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "> mm</font>"));
+        } else if (mClockSelection == 13) {
+            mClockView.setFormat12Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>hh</strong></font><br>mm"));
+            mClockView.setFormat24Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>kk</strong></font><br>mm"));
+        } else if (mClockSelection == 14) {
+            mClockView.setFormat12Hour(Html.fromHtml("<strong>hh</strong><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
+            mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
         } else {
             mClockView.setFormat12Hour("hh\nmm");
             mClockView.setFormat24Hour("kk\nmm");
@@ -522,6 +528,8 @@ public class KeyguardStatusView extends GridLayout implements
                 mCustomClockView.setVisibility(View.GONE);
                 break;
             case 7: // sammy accent
+            case 13: // sammy (bold) accent hour
+            case 14: // sammy (bold) accent min
                 mClockView.setVisibility(View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
                 break;
@@ -553,21 +561,11 @@ public class KeyguardStatusView extends GridLayout implements
                 params.addRule(RelativeLayout.BELOW, R.id.du_clock_view);
                 break;
             case 4: // sammy
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 5: // sammy (bold)
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 6: // sammy accent
-                params.addRule(RelativeLayout.BELOW, R.id.clock_view);
-                mClockView.setSingleLine(false);
-                mClockView.setGravity(Gravity.CENTER);
-                break;
             case 7: // sammy accent
+            case 13: // sammy (bold) accent hour
+            case 14: // sammy (bold) accent min
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(false);
                 mClockView.setGravity(Gravity.CENTER);
