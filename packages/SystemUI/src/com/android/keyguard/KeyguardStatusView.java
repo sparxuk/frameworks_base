@@ -76,7 +76,6 @@ public class KeyguardStatusView extends GridLayout implements
 
     private TextView mLogoutView;
     private CustomAnalogClock mCustomClockView;
-    //private CustomAnalogClock mDuClockView;
     private TextClock mClockView;
     private View mClockSeparator;
     private TextView mOwnerInfo;
@@ -196,7 +195,6 @@ public class KeyguardStatusView extends GridLayout implements
         mClockView = findViewById(R.id.clock_view);
         mClockView.setShowCurrentUserTime(true);
         mCustomClockView = findViewById(R.id.custom_clock_view);
-        //mDuClockView = findViewById(R.id.du_clock_view);
         mOwnerInfo = findViewById(R.id.owner_info);
         mKeyguardSlice = findViewById(R.id.keyguard_status_area);
         mClockSeparator = findViewById(R.id.clock_separator);
@@ -216,9 +214,6 @@ public class KeyguardStatusView extends GridLayout implements
         if (mCustomClockView != null) {
             mVisibleInDoze.add(mCustomClockView);
         }
-        //if (mDuClockView != null) {
-           // mVisibleInDoze.add(mDuClockView);
-        //}
 
         mTextColor = mClockView.getCurrentTextColor();
 
@@ -243,7 +238,6 @@ public class KeyguardStatusView extends GridLayout implements
 
     public void onThemeChanged(boolean useDarkTheme) {
         mCustomClockView.onThemeChanged(useDarkTheme, true);
-        //mDuClockView.onThemeChanged(useDarkTheme, true);
     }
 
     /**
@@ -267,13 +261,6 @@ public class KeyguardStatusView extends GridLayout implements
         customlayoutParams.bottomMargin = getResources().getDimensionPixelSize(
                 R.dimen.keyguard_security_view_top_margin);
         mCustomClockView.setLayoutParams(customlayoutParams);
-
-        // Du analog clock
-        //RelativeLayout.LayoutParams dulayoutParams =
-                //(RelativeLayout.LayoutParams) mDuClockView.getLayoutParams();
-        //dulayoutParams.bottomMargin = getResources().getDimensionPixelSize(
-                //R.dimen.keyguard_security_view_top_margin);
-        //mDuClockView.setLayoutParams(dulayoutParams);
 
         layoutParams = (RelativeLayout.LayoutParams) mClockSeparator.getLayoutParams();
         layoutParams.topMargin = smallClock ? (int) mWidgetPadding : 0;
@@ -386,28 +373,28 @@ public class KeyguardStatusView extends GridLayout implements
         } else if (mClockSelection == 1) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>h</strong>mm"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong>mm"));
-        } else if (mClockSelection == 5) {
+        } else if (mClockSelection == 4) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>hh</strong><br>mm"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><br>mm"));
-        } else if (mClockSelection == 6) {
+        } else if (mClockSelection == 5) {
             mClockView.setFormat12Hour(Html.fromHtml("hh<br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("kk<br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
-        } else if (mClockSelection == 7) {
+        } else if (mClockSelection == 6) {
             mClockView.setFormat12Hour(Html.fromHtml("<font color='#454545'>hh</font><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("<font color='#454545'>kk</font><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
-        } else if (mClockSelection == 10) {
+        } else if (mClockSelection == 7) {
             mClockView.setFormat12Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>h</strong> mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>kk</strong> mm</font>"));
-        } else if (mClockSelection == 11) {
+        } else if (mClockSelection == 8) {
             mClockView.setFormat12Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>h</strong></font> mm"));
             mClockView.setFormat24Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>kk</strong></font> mm"));
-        } else if (mClockSelection == 12) {
+        } else if (mClockSelection == 9) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>h</strong><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "> mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "> mm</font>"));
-        } else if (mClockSelection == 13) {
+        } else if (mClockSelection == 10) {
             mClockView.setFormat12Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>hh</strong></font><br>mm"));
             mClockView.setFormat24Hour(Html.fromHtml("<font color=" + getResources().getColor(R.color.sammy_minutes_accent) + "><strong>kk</strong></font><br>mm"));
-        } else if (mClockSelection == 14) {
+        } else if (mClockSelection == 11) {
             mClockView.setFormat12Hour(Html.fromHtml("<strong>hh</strong><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
             mClockView.setFormat24Hour(Html.fromHtml("<strong>kk</strong><br><font color=" + getResources().getColor(R.color.sammy_minutes_accent) + ">mm</font>"));
         } else {
@@ -488,48 +475,37 @@ public class KeyguardStatusView extends GridLayout implements
                 mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
-                //mDuClockView.setVisibility(View.GONE);
                 break;
             case 1: // digital (bold)
-            case 10: // digital (accent full)
-            case 11: // digital (accent hour)
-            case 12: // digital (accent minutes)
+            case 7: // digital (accent full)
+            case 8: // digital (accent hour)
+            case 9: // digital (accent minutes)
                 mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
-                //mDuClockView.setVisibility(View.GONE);
                 break;
             case 2: // custom analog
                 mCustomClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mClockView.setVisibility(View.GONE);
-                //mDuClockView.setVisibility(View.GONE);
                 break;
-            //case 3: // du analog
-                //mDuClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
-                       //View.GONE) : View.VISIBLE);
-                //mClockView.setVisibility(View.GONE);
-                //mCustomClockView.setVisibility(View.GONE);
-                //break;
-            case 4: // sammy
+            case 3: // sammy
                 mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
-                //mDuClockView.setVisibility(View.GONE);
                 break;
-            case 5: // sammy (bold)
+            case 4: // sammy (bold)
                 mClockView.setVisibility(mDarkAmount != 1 ? (mShowClock ? View.VISIBLE :
                        View.GONE) : View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
-                //mDuClockView.setVisibility(View.GONE);
                 break;
-            case 6: // sammy accent
+            case 5: // sammy accent
                 mClockView.setVisibility(View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
                 break;
-            case 7: // sammy accent
-            case 13: // sammy (bold) accent hour
-            case 14: // sammy (bold) accent min
+            case 6: // sammy accent
+            case 10: // sammy (bold) accent hour
+            case 11: // sammy (bold) accent min
                 mClockView.setVisibility(View.VISIBLE);
                 mCustomClockView.setVisibility(View.GONE);
                 break;
@@ -547,9 +523,9 @@ public class KeyguardStatusView extends GridLayout implements
                 mClockView.setGravity(Gravity.CENTER);
                 break;
             case 1: // digital (bold)
-            case 10: // digital (accent full)
-            case 11: // digital (accent hour)
-            case 12: // digital (accent minutes)
+            case 7: // digital (accent full)
+            case 8: // digital (accent hour)
+            case 9: // digital (accent minutes)
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(true);
                 mClockView.setGravity(Gravity.CENTER);
@@ -557,15 +533,12 @@ public class KeyguardStatusView extends GridLayout implements
             case 2: // custom analog
                 params.addRule(RelativeLayout.BELOW, R.id.custom_clock_view);
                 break;
-            //case 3: // du analog
-                //params.addRule(RelativeLayout.BELOW, R.id.du_clock_view);
-                //break;
-            case 4: // sammy
-            case 5: // sammy (bold)
+            case 3: // sammy
+            case 4: // sammy (bold)
+            case 5: // sammy accent
             case 6: // sammy accent
-            case 7: // sammy accent
-            case 13: // sammy (bold) accent hour
-            case 14: // sammy (bold) accent min
+            case 10: // sammy (bold) accent hour
+            case 11: // sammy (bold) accent min
                 params.addRule(RelativeLayout.BELOW, R.id.clock_view);
                 mClockView.setSingleLine(false);
                 mClockView.setGravity(Gravity.CENTER);
@@ -655,7 +628,6 @@ public class KeyguardStatusView extends GridLayout implements
         mClockView.setTextColor(blendedTextColor);
         mClockSeparator.setBackgroundColor(blendedTextColor);
         mCustomClockView.setDark(dark);
-        //mDuClockView.setDark(dark);
         updateVisibilities();
 
         if (mWeatherView != null) {
