@@ -21,6 +21,8 @@ import static android.app.StatusBarManager.DISABLE_SYSTEM_INFO;
 import android.annotation.Nullable;
 import android.app.Fragment;
 import android.app.StatusBarManager;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -77,14 +79,17 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private StatusBar mStatusBarComponent;
     private DarkIconManager mDarkIconManager;
     private View mOperatorNameFrame;
+
     // Validus logo
     private ImageView mValidusLogo;
     private int mLogoStyle;
+    private int mLogoColor;
+    private boolean mShowLogo;
+
     // Custom Carrier
+    private ContentResolver mContentResolver;
     private View mCustomCarrierLabel;
     private int mShowCarrierLabel;
-    private boolean mShowLogo;
-    private int mLogoColor;
     private final Handler mHandler = new Handler();
 
     private class ValidusSettingsObserver extends ContentObserver {
@@ -102,7 +107,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
             getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_LOGO_COLOR),
                     false, this, UserHandle.USER_ALL);
-            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+            mContentResolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.STATUS_BAR_SHOW_CARRIER),
                     false, this, UserHandle.USER_ALL);
         }
@@ -129,6 +134,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContentResolver = getContext().getContentResolver();
         mKeyguardMonitor = Dependency.get(KeyguardMonitor.class);
         mNetworkController = Dependency.get(NetworkController.class);
         mStatusBarComponent = SysUiServiceProvider.getComponent(getContext(), StatusBar.class);
@@ -280,7 +286,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideSystemIconArea(boolean animate) {
-        animateHide(mSystemIconArea, animate, true);
+        animateHide(mSystemIconArea, animate);
     }
 
     public void showSystemIconArea(boolean animate) {
@@ -289,7 +295,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideClock(boolean animate) {
         if (mClockView.isClockVisible()) {
-            animateHiddenState(mClockView, clockHiddenMode(), animate, true);
+            animateHiddenState(mClockView, clockHiddenMode(), animate);
         }
     }
 
@@ -311,9 +317,9 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideNotificationIconArea(boolean animate) {
-        animateHide(mNotificationIconAreaInner, animate, true);
+        animateHide(mNotificationIconAreaInner, animate);
         if (mShowLogo) {
-            animateHide(mValidusLogo, animate, true);
+            animateHide(mValidusLogo, animate);
         }
     }
 
@@ -326,7 +332,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideOperatorName(boolean animate) {
         if (mOperatorNameFrame != null) {
-            animateHide(mOperatorNameFrame, animate, true);
+            animateHide(mOperatorNameFrame, animate);
         }
     }
 
@@ -339,14 +345,14 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     /**
      * Animate a view to INVISIBLE or GONE
      */
-    private void animateHiddenState(final View v, int state, boolean animate, final boolean invisible) {
+    private void animateHiddenState(final View v, int state, boolean animate) {
         if (v instanceof Clock && !((Clock)v).isClockVisible()) {
             return;
         }
         v.animate().cancel();
         if (!animate) {
             v.setAlpha(0f);
-            v.setVisibility(invisible ? View.INVISIBLE : View.GONE);
+            v.setVisibility(state);
             return;
         }
 
@@ -355,14 +361,21 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 .setDuration(160)
                 .setStartDelay(0)
                 .setInterpolator(Interpolators.ALPHA_OUT)
-                .withEndAction(() -> v.setVisibility(invisible ? View.INVISIBLE : View.GONE));
+                .withEndAction(() -> v.setVisibility(state));
     }
 
     /**
      * Hides a view.
      */
-    private void animateHide(final View v, boolean animate, final boolean invisible) {
-        animateHiddenState(v, View.INVISIBLE, animate, invisible);
+    private void animateHide(final View v, boolean animate) {
+        animateHiddenState(v, View.INVISIBLE, animate);
+    }
+
+    /**
+     * Remove a view.
+     */
+    private void animateGone(final View v) {
+        animateHiddenState(v, View.GONE, false);
     }
 
     /**
@@ -421,7 +434,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideCarrierName(boolean animate) {
         if (mCustomCarrierLabel != null) {
-            animateHiddenState(mCustomCarrierLabel, View.GONE, animate, false);
+            animateHiddenState(mCustomCarrierLabel, View.GONE, animate);
         }
     }
 
@@ -435,15 +448,15 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (mShowCarrierLabel == 2 || mShowCarrierLabel == 3) {
             animateShow(mCustomCarrierLabel, animate);
         } else {
-            animateHiddenState(mCustomCarrierLabel, View.GONE, animate, false);
+            animateHiddenState(mCustomCarrierLabel, View.GONE, animate);
         }
     }
 
     public void updateSettings(boolean animate) {
-
-        mShowCarrierLabel = Settings.System.getIntForUser(
-        		getContext().getContentResolver(), Settings.System.STATUS_BAR_SHOW_CARRIER, 1,
+        mShowCarrierLabel = Settings.System.getIntForUser(mContentResolver,
+                Settings.System.STATUS_BAR_SHOW_CARRIER, 1,
                 UserHandle.USER_CURRENT);
+        setCarrierLabel(animate);
         }
 
     // Let's separate out LOGO updates exclusively.
@@ -510,9 +523,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     animateShow(mValidusLogo, animate);
                 }
             } else {
-                animateHide(mValidusLogo, animate, false);
+                animateHide(mValidusLogo, animate);
             }
         }
-        setCarrierLabel(animate);
     }
 }
