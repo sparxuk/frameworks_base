@@ -47,6 +47,7 @@ import com.android.systemui.qs.tiles.ScreenrecordTile;
 import com.android.systemui.qs.tiles.SyncTile;
 import com.android.systemui.qs.tiles.ThemeTile;
 import com.android.systemui.qs.tiles.UserTile;
+import com.android.systemui.qs.tiles.VpnTile;
 import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WeatherTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
@@ -123,6 +124,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new SyncTile(mHost);
             case "screenshot":
                 return new ScreenshotTile(mHost);        
+            case "vpn":
+                return new VpnTile(mHost);
         }
 
         // Intent tiles.
