@@ -4870,7 +4870,17 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
-        * Whether to show battery light when DND mode is active
+         * Enable face auto unlock on secure lock screens
+         *
+         * @hide
+         */
+        public static final String DISPLAY_MODE = "display_mode";
+
+        private static final Validator DISPLAY_MODE_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;
+
+        /**
+       * Whether to show battery light when DND mode is active
         * @hide
         */
        public static final String BATTERY_LIGHT_ALLOW_ON_DND = "battery_light_allow_on_dnd";
@@ -5153,6 +5163,7 @@ public final class Settings {
             OMNI_LOCKSCREEN_WEATHER_ENABLED,
             TOAST_ICON,
             TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
+            DISPLAY_MODE,
             NOTIFICATION_SOUND_VIB_SCREEN_ON,
             FINGERPRINT_SUCCESS_VIB,
             DISPLAY_CUTOUT_MODE,
@@ -5321,6 +5332,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_RUNNING_SERVICES_TOGGLE);
             PRIVATE_SETTINGS.add(THEMING_SETTINGS_DASHBOARD_ICONS);
             PRIVATE_SETTINGS.add(ENABLE_GAMING_MODE);
+            PRIVATE_SETTINGS.add(DISPLAY_MODE);
         }
 
         /**
@@ -5443,6 +5455,7 @@ public final class Settings {
             VALIDATORS.put(THEMING_SETTINGS_DASHBOARD_ICONS,
                     THEMING_SETTINGS_DASHBOARD_ICONS_VALIDATOR);
             VALIDATORS.put(ENABLE_GAMING_MODE,ENABLE_GAMING_MODE_VALIDATOR);
+            VALIDATORS.put(DISPLAY_MODE, DISPLAY_MODE_VALIDATOR);
         }
 
         /**
