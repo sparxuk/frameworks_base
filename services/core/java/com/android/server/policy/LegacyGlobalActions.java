@@ -224,8 +224,8 @@ class LegacyGlobalActions implements DialogInterface.OnDismissListener, DialogIn
                 R.drawable.ic_lock_airplane_mode,
                 R.drawable.ic_lock_airplane_mode_off,
                 R.string.global_actions_toggle_airplane_mode,
-                R.string.global_actions_airplane_mode_on_status,
-                R.string.global_actions_airplane_mode_off_status) {
+                R.string.global_actions_airplane_mode_on,
+                R.string.global_actions_airplane_mode_off) {
 
             @Override
             public void onToggle(boolean on) {

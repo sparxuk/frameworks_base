@@ -1772,6 +1772,8 @@
   <java-symbol type="string" name="global_action_restart" />
   <java-symbol type="string" name="global_actions_airplane_mode_off_status" />
   <java-symbol type="string" name="global_actions_airplane_mode_on_status" />
+  <java-symbol type="string" name="global_actions_airplane_mode_off" />
+  <java-symbol type="string" name="global_actions_airplane_mode_on" />
   <java-symbol type="string" name="global_actions_toggle_airplane_mode" />
   <java-symbol type="string" name="global_action_bug_report" />
   <java-symbol type="string" name="global_action_settings" />
