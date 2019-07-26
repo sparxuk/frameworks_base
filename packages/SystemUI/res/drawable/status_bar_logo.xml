@@ -4,7 +4,7 @@
     android:viewportHeight="4.233334"
     android:width="16dp"
     android:height="16dp"
-    android:tint="?android:attr/colorAccent">
+    android:tint="@*android:color/accent_device_default_light"> 
     <group
         android:translateY="-292.7667">
         <group
