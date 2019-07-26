@@ -4985,6 +4985,16 @@ public final class Settings {
         public static final String LOCKSCREEN_INDICATION_TEXT_COLOR = "lockscreen_indication_text_color";
 
         /**
+         * Wheter to show heads up only for dialer and sms apps
+         * @hide
+         */
+        public static final String LESS_BORING_HEADS_UP = "less_boring_heads_up";
+
+        /** @hide */
+        private static final Validator LESS_BORING_HEADS_UP_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5059,7 +5069,8 @@ public final class Settings {
             QS_SMART_PULLDOWN,
 	    ONE_HAND_MODE_ENABLED,
             SHOW_BATTERY_ESTIMATE_QQS,
-            SHOW_LTE_FOURGEE,	
+            SHOW_LTE_FOURGEE,
+            LESS_BORING_HEADS_UP, 	
         };
 
         /**
@@ -5207,10 +5218,11 @@ public final class Settings {
             PRIVATE_SETTINGS.add(DISPLAY_CUTOUT_MODE);
             PRIVATE_SETTINGS.add(STOCK_STATUSBAR_IN_HIDE);
             PRIVATE_SETTINGS.add(QS_SMART_PULLDOWN);
-	    PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
+	        PRIVATE_SETTINGS.add(ONE_HAND_MODE_ENABLED);
             PRIVATE_SETTINGS.add(SHOW_BATTERY_ESTIMATE_QQS);
             PRIVATE_SETTINGS.add(SHOW_LTE_FOURGEE);
             PRIVATE_SETTINGS.add(HEADSET_CONNECT_PLAYER);
+            PRIVATE_SETTINGS.add(LESS_BORING_HEADS_UP); 
         }
 
         /**
@@ -5328,6 +5340,7 @@ public final class Settings {
 	    VALIDATORS.put(ONE_HAND_MODE_ENABLED,ONE_HAND_MODE_ENABLED_VALIDATOR);
             VALIDATORS.put(SHOW_BATTERY_ESTIMATE_QQS, SHOW_BATTERY_ESTIMATE_QQS_VALIDATOR);
             VALIDATORS.put(SHOW_LTE_FOURGEE,SHOW_LTE_FOURGEE_VALIDATOR);
+            VALIDATORS.put(LESS_BORING_HEADS_UP,LESS_BORING_HEADS_UP_VALIDATOR); 
         }
 
         /**

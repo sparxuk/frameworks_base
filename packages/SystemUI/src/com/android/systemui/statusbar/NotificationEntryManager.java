@@ -131,6 +131,8 @@ public class NotificationEntryManager implements Dumpable, NotificationInflater.
     private ExpandableNotificationRow.OnAppOpsClickListener mOnAppOpsClickListener;
 
     private NotificationData.Entry mEntryToRefresh;
+	
+    private boolean mLessBoringHeadsUp; 
 
     /**
      * Notifications with keys in this set are not actually around anymore. We kept them around
@@ -944,14 +946,26 @@ public class NotificationEntryManager implements Dumpable, NotificationInflater.
     public void onOverlayChanged() {
         updateNotificationsOnDensityOrFontScaleChanged();
     }
+	
+    public void setUseLessBoringHeadsUp(boolean lessBoring) {
+        mLessBoringHeadsUp = lessBoring;
+    }
+
+    public boolean shouldSkipHeadsUp(StatusBarNotification sbn) {
+        boolean isImportantHeadsUp = false;
+        String notificationPackageName = sbn.getPackageName().toLowerCase();
+        isImportantHeadsUp = notificationPackageName.contains("dialer") ||
+                notificationPackageName.contains("messaging");
+        return !mPresenter.isDozing() && mLessBoringHeadsUp && !isImportantHeadsUp;
+    }
 
     protected boolean shouldPeek(NotificationData.Entry entry) {
         return shouldPeek(entry, entry.notification);
     }
 
     public boolean shouldPeek(NotificationData.Entry entry, StatusBarNotification sbn) {
-        if (!mUseHeadsUp && !mPresenter.isDozing() || mPresenter.isDeviceInVrMode()) {
-            if (DEBUG) Log.d(TAG, "No peeking: no huns or vr mode");
+        if (!mUseHeadsUp && !mPresenter.isDozing() || mPresenter.isDeviceInVrMode() || shouldSkipHeadsUp(sbn)) {
+            if (DEBUG) Log.d(TAG, "No peeking: no huns or vr mode or less boring headsup enabled");
             return false;
         }
 
