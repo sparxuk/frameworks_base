@@ -129,6 +129,8 @@ public class QSFactoryImpl implements QSFactory {
                 return new VpnTile(mHost);
             case "gaming":
                 return new GamingModeTile(mHost);
+            case "caffeine":
+                return new CaffeineTile(mHost);
         }
 
         // Intent tiles.
