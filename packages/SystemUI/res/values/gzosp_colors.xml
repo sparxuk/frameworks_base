@@ -54,7 +54,7 @@
     <color name="screenshot_background_color">@android:color/black</color>
 
     <!-- Color of the FOD view -->
-    <color name="config_fodColor">#00ffea</color>
+    <color name="config_fodColor">#00ffff</color>
 
 </resources>
 
