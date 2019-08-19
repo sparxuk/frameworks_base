@@ -4430,6 +4430,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 triggerVirtualKeypress(KeyEvent.KEYCODE_MENU, false);
                 break;
             case KEY_ACTION_BACK:
+                triggerVirtualKeypress(KeyEvent.KEYCODE_BACK, false);
+                break;
             case KEY_ACTION_IN_APP_SEARCH:
                 triggerVirtualKeypress(keyCode, false);
                 break;
