@@ -1,4 +1,3 @@
-
 /*
  * Copyright (C) 2016 The CyanogenMod Project
  *
@@ -64,6 +63,29 @@ public final class FileUtils {
             }
         }
 
+        return line;
+    }
+
+    public static String readLine(String filename) {
+        if (filename == null) {
+            return null;
+        }
+        BufferedReader br = null;
+        String line = null;
+        try {
+            br = new BufferedReader(new FileReader(filename), 1024);
+            line = br.readLine();
+        } catch (IOException e) {
+            return null;
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    // ignore
+                }
+            }
+        }
         return line;
     }
 
@@ -181,5 +203,21 @@ public final class FileUtils {
             Log.e(TAG, "NullPointerException trying to rename " + srcPath + " to " + dstPath, e);
         }
         return ok;
+    }
+
+    public static boolean getFileValueAsBoolean(String filename, boolean defValue) {
+        String fileValue = readLine(filename);
+        if(fileValue!=null){
+            return (fileValue.equals("0")?false:true);
+        }
+        return defValue;
+    }
+
+    public static String getFileValue(String filename, String defValue) {
+        String fileValue = readLine(filename);
+        if(fileValue!=null){
+            return fileValue;
+        }
+        return defValue;
     }
 }
