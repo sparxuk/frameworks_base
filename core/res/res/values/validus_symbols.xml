@@ -33,5 +33,8 @@
 
   <!-- Pocket Mode -->
   <java-symbol type="bool" name="config_proxiSensorWakupCheck" />
-  
+
+  <!-- Ambiant Pulse Light -->
+  <java-symbol type="integer" name="config_AmbiantPulseLightColor" />
+ 
 </resources>

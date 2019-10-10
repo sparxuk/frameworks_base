@@ -5221,6 +5221,44 @@ public final class Settings {
         private static final Validator CLOCK_SHOW_STATUS_AREA_VALIDATOR =
                BOOLEAN_VALIDATOR;
 
+         /**
+         * Whether to enable PULSE Edge lights
+         * @hide
+         */
+        public static final String OMNI_PULSE_AMBIENT_LIGHT = "pulse_ambient_light";
+
+        private static final Validator OMNI_PULSE_AMBIENT_LIGHT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether to enable Ambient Edge lights
+         * @hide
+         */
+
+        public static final String OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED = "ambient_notification_light_enabled";
+
+        private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR = BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether to enable Ambient Edge lights
+         * @hide
+         */
+
+        public static final String OMNI_AMBIENT_NOTIFICATION_LIGHT = "ambient_notification_light";
+
+        private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+         /**
+         * Whether Ambient Edge lights are activated
+         * @hide
+         */
+
+        public static final String OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED = "ambient_notification_light_activated";
+
+        private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
@@ -5328,6 +5366,10 @@ public final class Settings {
             OMNI_USE_OLD_MOBILETYPE,
             QS_RUNNING_SERVICES_TOGGLE,
             CLOCK_SHOW_STATUS_AREA,
+            OMNI_PULSE_AMBIENT_LIGHT,
+            OMNI_AMBIENT_NOTIFICATION_LIGHT,
+            OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED,
+            OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED,
         };
 
         /**
@@ -5488,6 +5530,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_ACCENT);
             PRIVATE_SETTINGS.add(OMNI_USE_OLD_MOBILETYPE);
             PRIVATE_SETTINGS.add(CLOCK_SHOW_STATUS_AREA);
+            PRIVATE_SETTINGS.add(OMNI_PULSE_AMBIENT_LIGHT);
+            PRIVATE_SETTINGS.add(OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED);
         }
 
         /**
@@ -5634,6 +5678,10 @@ public final class Settings {
             VALIDATORS.put(OMNI_USE_OLD_MOBILETYPE, OMNI_USE_OLD_MOBILETYPE_VALIDATOR);
             VALIDATORS.put(QS_RUNNING_SERVICES_TOGGLE, QS_RUNNING_SERVICES_TOGGLE_VALIDATOR);
             VALIDATORS.put(CLOCK_SHOW_STATUS_AREA, CLOCK_SHOW_STATUS_AREA_VALIDATOR);
+            VALIDATORS.put(OMNI_PULSE_AMBIENT_LIGHT, OMNI_PULSE_AMBIENT_LIGHT_VALIDATOR);
+            VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT, OMNI_AMBIENT_NOTIFICATION_LIGHT_VALIDATOR);
+            VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED, OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR);
+            VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED, OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR);
         }
 
         /**
