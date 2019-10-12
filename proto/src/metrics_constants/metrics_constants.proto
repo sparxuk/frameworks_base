@@ -7432,5 +7432,8 @@ message MetricsEvent {
 
     // GZOSP constants
     GZOSP = 4000;
+
+    // VALIDUS constants
+    VALIDUS = 4001;
   }
 }
