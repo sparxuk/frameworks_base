@@ -4912,6 +4912,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * Whether footer #Validus text shows
+         * @hide
+         */
+        public static final String VALIDUS_FOOTER_TEXT_SHOW = "validus_footer_text_show";
+         /** @hide */
+        private static final Validator VALIDUS_FOOTER_TEXT_SHOW_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -4997,6 +5006,7 @@ public final class Settings {
             VOLUME_BUTTON_MUSIC_CONTROL,
             VOLUME_KEY_CURSOR_CONTROL,
             OMNI_SYSTEM_PROXI_CHECK_ENABLED,
+            VALIDUS_FOOTER_TEXT_SHOW,
         };
 
         /**
@@ -5256,6 +5266,7 @@ public final class Settings {
             VALIDATORS.put(VOLUME_BUTTON_MUSIC_CONTROL, VOLUME_BUTTON_MUSIC_CONTROL_VALIDATOR);
             VALIDATORS.put(VOLUME_KEY_CURSOR_CONTROL, VOLUME_KEY_CURSOR_CONTROL_VALIDATOR);
             VALIDATORS.put(OMNI_SYSTEM_PROXI_CHECK_ENABLED, OMNI_SYSTEM_PROXI_CHECK_ENABLED_VALIDATOR);
+            VALIDATORS.put(VALIDUS_FOOTER_TEXT_SHOW, VALIDUS_FOOTER_TEXT_SHOW_VALIDATOR);
         }
 
         /**
@@ -9550,6 +9561,7 @@ public final class Settings {
         /** @hide */
         private static final Validator STATUSBAR_CLOCK_AM_PM_STYLE_VALIDATOR =
                 new SettingsValidators.InclusiveIntegerRangeValidator(0, 2);
+
         /**
          * Shows custom date before clock time
          * 0 - No Date
