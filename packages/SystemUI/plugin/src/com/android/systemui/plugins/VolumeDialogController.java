@@ -107,6 +107,7 @@ public interface VolumeDialogController {
         public ComponentName effectsSuppressor;
         public String effectsSuppressorName;
         public int activeStream = NO_ACTIVE_STREAM;
+        public boolean linkedNotification;
         public boolean disallowAlarms;
         public boolean disallowMedia;
         public boolean disallowSystem;
@@ -158,6 +159,7 @@ public interface VolumeDialogController {
             sep(sb, indent); sb.append("effectsSuppressor:").append(effectsSuppressor);
             sep(sb, indent); sb.append("effectsSuppressorName:").append(effectsSuppressorName);
             sep(sb, indent); sb.append("activeStream:").append(activeStream);
+            sep(sb, indent); sb.append("linkedNotification:").append(linkedNotification);
             sep(sb, indent); sb.append("disallowAlarms:").append(disallowAlarms);
             sep(sb, indent); sb.append("disallowMedia:").append(disallowMedia);
             sep(sb, indent); sb.append("disallowSystem:").append(disallowSystem);
