@@ -445,6 +445,14 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
                 break;
                 // Default
+                // Running Wolf
+            case 4:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_running_wolf_logo);
+                break;
+                // Oreo Wolf
+            case 5:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
+                break;	
             default:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
                 break;
