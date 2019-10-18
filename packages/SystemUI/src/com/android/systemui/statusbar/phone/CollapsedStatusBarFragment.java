@@ -420,6 +420,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void updateSettings(boolean animate) {
         Drawable logo = null;
+        if (mStatusBar == null) return;
         mShowLogo = Settings.System.getIntForUser(
                 getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
                 UserHandle.USER_CURRENT) == 1;
@@ -428,10 +429,6 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 UserHandle.USER_CURRENT);
 
                 switch(mLogoStyle) {
-                // Wolf Shield
-            case 0:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
-                break;
                 // GZR Skull
             case 1:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_skull_logo);
@@ -454,7 +451,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
                 break;	
             default:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_logo);
                 break;
         }
 
