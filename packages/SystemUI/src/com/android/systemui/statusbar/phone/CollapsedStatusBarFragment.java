@@ -20,7 +20,10 @@ import static android.app.StatusBarManager.DISABLE_SYSTEM_INFO;
 
 import android.annotation.Nullable;
 import android.app.Fragment;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
@@ -286,7 +289,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideSystemIconArea(boolean animate) {
-        animateHide(mSystemIconArea, animate, true);
+        animateHide(mSystemIconArea, animate);
     }
 
     public void showSystemIconArea(boolean animate) {
@@ -294,7 +297,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideClock(boolean animate) {
-            animateHiddenState(mClockView, clockHiddenMode(), animate, true);
+            animateHiddenState(mClockView, clockHiddenMode(), animate);
     }
 
     public void showClock(boolean animate) {
@@ -314,10 +317,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideNotificationIconArea(boolean animate) {
-        animateHide(mNotificationIconAreaInner, animate, true);
-        animateHide(mCenteredIconArea, animate, true);
+        animateHide(mNotificationIconAreaInner, animate);
+        animateHide(mCenteredIconArea, animate);
         if (mShowLogo) {
-            animateHide(mValidusLogo, animate, true);
+            animateHide(mValidusLogo, animate);
         }
     }
 
@@ -331,7 +334,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
 
     public void hideOperatorName(boolean animate) {
         if (mOperatorNameFrame != null) {
-            animateHide(mOperatorNameFrame, animate, true);
+            animateHide(mOperatorNameFrame, animate);
         }
     }
 
@@ -344,11 +347,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     /**
      * Animate a view to INVISIBLE or GONE
      */
-    private void animateHiddenState(final View v, int state, boolean animate, final boolean invisible) {
+    private void animateHiddenState(final View v, int state, boolean animate) {
         v.animate().cancel();
         if (!animate) {
             v.setAlpha(0f);
-            v.setVisibility(invisible ? View.INVISIBLE : View.GONE);
+            v.setVisibility(state);
             return;
         }
 
@@ -357,14 +360,21 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 .setDuration(160)
                 .setStartDelay(0)
                 .setInterpolator(Interpolators.ALPHA_OUT)
-                .withEndAction(() -> v.setVisibility(invisible ? View.INVISIBLE : View.GONE));
+                .withEndAction(() -> v.setVisibility(state));
     }
 
     /**
      * Hides a view.
      */
-    private void animateHide(final View v, boolean animate, final boolean invisible) {
-        animateHiddenState(v, View.INVISIBLE, animate, invisible);
+    private void animateHide(final View v, boolean animate) {
+        animateHiddenState(v, View.INVISIBLE, animate);
+    }
+
+    /**
+     * Remove a view.
+     */
+    private void animateGone(final View v) {
+        animateHiddenState(v, View.GONE, false);
     }
 
     /**
@@ -469,7 +479,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                     animateShow(mValidusLogo, animate);
                 }
             } else {
-                animateHide(mValidusLogo, animate, false);
+                animateHide(mValidusLogo, animate);
             }
         }
     }
