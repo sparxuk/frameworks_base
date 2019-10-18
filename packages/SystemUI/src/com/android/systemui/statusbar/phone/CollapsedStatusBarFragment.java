@@ -20,9 +20,13 @@ import static android.app.StatusBarManager.DISABLE_SYSTEM_INFO;
 
 import android.annotation.Nullable;
 import android.app.Fragment;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
 import android.os.Parcelable;
 import android.util.SparseArray;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +72,28 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     private DarkIconManager mDarkIconManager;
     private View mOperatorNameFrame;
     private CommandQueue mCommandQueue;
+    // Validus logo
+    private View mValidusLogo;
+    private boolean mShowLogo;
+    private final Handler mHandler = new Handler();
+
+    private class ValidusSettingsObserver extends ContentObserver {
+        ValidusSettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            getContext().getContentResolver().registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_LOGO),
+                    false, this, UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            updateSettings(true);
+        }
+    }
+    private ValidusSettingsObserver mValidusSettingsObserver = new ValidusSettingsObserver(mHandler);
 
     private SignalCallback mSignalCallback = new SignalCallback() {
         @Override
@@ -84,6 +110,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         mStatusBarStateController = Dependency.get(StatusBarStateController.class);
         mStatusBarComponent = SysUiServiceProvider.getComponent(getContext(), StatusBar.class);
         mCommandQueue = SysUiServiceProvider.getComponent(getContext(), CommandQueue.class);
+        mValidusSettingsObserver.observe();
     }
 
     @Override
@@ -105,6 +132,8 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         Dependency.get(StatusBarIconController.class).addIconGroup(mDarkIconManager);
         mSystemIconArea = mStatusBar.findViewById(R.id.system_icon_area);
         mClockView = mStatusBar.findViewById(R.id.clock);
+        mValidusLogo = mStatusBar.findViewById(R.id.status_bar_logo);
+        updateSettings(false);
         showSystemIconArea(false);
         showClock(false);
         initEmergencyCryptkeeperText();
@@ -248,7 +277,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideSystemIconArea(boolean animate) {
-        animateHide(mSystemIconArea, animate);
+        animateHide(mSystemIconArea, animate, true);
     }
 
     public void showSystemIconArea(boolean animate) {
@@ -256,7 +285,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideClock(boolean animate) {
-        animateHiddenState(mClockView, clockHiddenMode(), animate);
+            animateHiddenState(mClockView, clockHiddenMode(), animate, true);
     }
 
     public void showClock(boolean animate) {
@@ -276,18 +305,24 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     }
 
     public void hideNotificationIconArea(boolean animate) {
-        animateHide(mNotificationIconAreaInner, animate);
-        animateHide(mCenteredIconArea, animate);
+        animateHide(mNotificationIconAreaInner, animate, true);
+        animateHide(mCenteredIconArea, animate, true);
+        if (mShowLogo) {
+            animateHide(mValidusLogo, animate, true);
+        }
     }
 
     public void showNotificationIconArea(boolean animate) {
         animateShow(mNotificationIconAreaInner, animate);
         animateShow(mCenteredIconArea, animate);
+        if (mShowLogo) {
+            animateShow(mValidusLogo, animate);
+        }
     }
 
     public void hideOperatorName(boolean animate) {
         if (mOperatorNameFrame != null) {
-            animateHide(mOperatorNameFrame, animate);
+            animateHide(mOperatorNameFrame, animate, true);
         }
     }
 
@@ -300,11 +335,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
     /**
      * Animate a view to INVISIBLE or GONE
      */
-    private void animateHiddenState(final View v, int state, boolean animate) {
+    private void animateHiddenState(final View v, int state, boolean animate, final boolean invisible) {
         v.animate().cancel();
         if (!animate) {
             v.setAlpha(0f);
-            v.setVisibility(state);
+            v.setVisibility(invisible ? View.INVISIBLE : View.GONE);
             return;
         }
 
@@ -313,14 +348,14 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 .setDuration(160)
                 .setStartDelay(0)
                 .setInterpolator(Interpolators.ALPHA_OUT)
-                .withEndAction(() -> v.setVisibility(state));
+                .withEndAction(() -> v.setVisibility(invisible ? View.INVISIBLE : View.GONE));
     }
 
     /**
      * Hides a view.
      */
-    private void animateHide(final View v, boolean animate) {
-        animateHiddenState(v, View.INVISIBLE, animate);
+    private void animateHide(final View v, boolean animate, final boolean invisible) {
+        animateHiddenState(v, View.INVISIBLE, animate, invisible);
     }
 
     /**
@@ -371,6 +406,21 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         if (getResources().getBoolean(R.bool.config_showOperatorNameInStatusBar)) {
             ViewStub stub = mStatusBar.findViewById(R.id.operator_name);
             mOperatorNameFrame = stub.inflate();
+        }
+    }
+
+    public void updateSettings(boolean animate) {
+        mShowLogo = Settings.System.getIntForUser(
+                getContext().getContentResolver(), Settings.System.STATUS_BAR_LOGO, 0,
+                UserHandle.USER_CURRENT) == 1;
+        if (mNotificationIconAreaInner != null) {
+            if (mShowLogo) {
+                if (mNotificationIconAreaInner.getVisibility() == View.VISIBLE) {
+                    animateShow(mValidusLogo, animate);
+                }
+            } else {
+                animateHide(mValidusLogo, animate, false);
+            }
         }
     }
 
