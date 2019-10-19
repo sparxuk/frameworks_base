@@ -29,6 +29,7 @@ import android.view.MotionEvent;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.systemui.R;
 import com.android.keyguard.KeyguardUpdateMonitor;
+import com.android.systemui.R;
 import com.android.systemui.classifier.brightline.BrightLineFalsingManager;
 import com.android.systemui.classifier.brightline.FalsingDataProvider;
 import com.android.systemui.plugins.FalsingManager;
