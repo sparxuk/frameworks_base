@@ -20,12 +20,14 @@ import static com.android.internal.config.sysui.SystemUiDeviceConfigFlags.BRIGHT
 import static com.android.systemui.Dependency.MAIN_HANDLER_NAME;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Handler;
 import android.provider.DeviceConfig;
 import android.view.MotionEvent;
 
 import com.android.internal.annotations.VisibleForTesting;
+import com.android.systemui.R;
 import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.systemui.classifier.brightline.BrightLineFalsingManager;
 import com.android.systemui.classifier.brightline.FalsingDataProvider;
@@ -96,9 +98,10 @@ public class FalsingManagerProxy implements FalsingManager {
      */
     @VisibleForTesting
     public void setupFalsingManager(Context context) {
+        Resources res = context.getResources();
         boolean brightlineEnabled = DeviceConfig.getBoolean(
-                DeviceConfig.NAMESPACE_SYSTEMUI, BRIGHTLINE_FALSING_MANAGER_ENABLED, true);
-
+                DeviceConfig.NAMESPACE_SYSTEMUI, BRIGHTLINE_FALSING_MANAGER_ENABLED,
+                res.getBoolean(R.bool.config_lockscreenAntiFalsingClassifierEnabled));
         if (mInternalFalsingManager != null) {
             mInternalFalsingManager.cleanup();
         }
