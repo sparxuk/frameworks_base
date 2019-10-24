@@ -439,29 +439,52 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 UserHandle.USER_CURRENT);
 
                 switch(mLogoStyle) {
-                // GZR Skull
+                // Marty
+            case 0:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_2_logo);
+                break;
+                // GZR Clown
             case 1:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
+                break;
+                // GZR Big Top
+            case 2:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_big_top_logo);
+                break;
+                // GZR Top Hat
+            case 3:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_top_hat_logo);
+                break;
+                // GZR V Logo
+            case 4:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_v_logo);
+                break;
+                // GZR Star
+            case 5:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_star_logo);
+                break;
+                // Wolf Shield
+            case 6:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_logo);
+                break;
+                // GZR Skull
+            case 7:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_skull_logo);
                 break;
                 // GZR Circle
-            case 2:
+            case 8:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_gzr_circle_logo);
                 break;
-                // GZR Clown
-            case 3:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
-                break;
-                // Default
                 // Running Wolf
-            case 4:
+            case 9:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_running_wolf_logo);
                 break;
                 // Oreo Wolf
-            case 5:
+            case 10:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
                 break;	
             default:
-                logo = getContext().getDrawable(R.drawable.status_bar_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_clown_2_logo);
                 break;
         }
 
