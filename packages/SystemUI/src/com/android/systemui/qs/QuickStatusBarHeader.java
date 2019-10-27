@@ -132,6 +132,11 @@ public class QuickStatusBarHeader extends RelativeLayout implements
     private DateView mDateView;
     private BatteryMeterView mBatteryRemainingIcon;
 
+    private static final String QS_BATTERY_MODE =
+            "system:" + Settings.System.QS_BATTERY_MODE;
+    public static final String STATUS_BAR_BATTERY_STYLE =
+            "system:" + Settings.System.STATUS_BAR_BATTERY_STYLE;
+
     private final BroadcastReceiver mRingerReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -205,11 +210,13 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         mBatteryRemainingIcon = findViewById(R.id.batteryRemainingIcon);
         // Don't need to worry about tuner settings for this icon
         mBatteryRemainingIcon.setIgnoreTunerUpdates(true);
-        // QS will always show the estimate, and BatteryMeterView handles the case where
-        // it's unavailable or charging
-        mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ESTIMATE);
+        mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ON);
         mRingerModeTextView.setSelected(true);
         mNextAlarmTextView.setSelected(true);
+
+        Dependency.get(TunerService.class).addTunable(this,
+                QS_BATTERY_MODE,
+                STATUS_BAR_BATTERY_STYLE);
     }
 
     private void updateStatusText() {
@@ -547,6 +554,40 @@ public class QuickStatusBarHeader extends RelativeLayout implements
         if (StatusBarIconController.ICON_BLACKLIST.equals(key)) {
             mClockView.setClockVisibleByUser(!StatusBarIconController.getIconBlacklist(newValue)
                     .contains("clock"));
+        }
+    }
+
+    @Override
+    public void onTuningChanged(String key, String newValue) {
+        switch (key) {
+            case QS_BATTERY_MODE:
+                int showEstimate =
+                        TunerService.parseInteger(newValue, 1);
+                if (showEstimate == 0) {
+                    mBatteryRemainingIcon.mShowBatteryPercent = 0;
+                    mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_OFF);
+                } else if (showEstimate == 1) {
+                    mBatteryRemainingIcon.mShowBatteryPercent = 0;
+                    mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ON);
+                } else if (showEstimate == 2) {
+                    mBatteryRemainingIcon.mShowBatteryPercent = 1;
+                    mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_OFF);
+                } else if (showEstimate == 3) {
+                    mBatteryRemainingIcon.mShowBatteryPercent = 0;
+                    mBatteryRemainingIcon.setPercentShowMode(BatteryMeterView.MODE_ESTIMATE);
+                }
+                mBatteryRemainingIcon.updatePercentView();
+                mBatteryRemainingIcon.updateVisibility();
+                break;
+            case STATUS_BAR_BATTERY_STYLE:
+                mBatteryRemainingIcon.mBatteryStyle =
+                        TunerService.parseInteger(newValue, 0);
+                mBatteryRemainingIcon.updateBatteryStyle();
+                mBatteryRemainingIcon.updatePercentView();
+                mBatteryRemainingIcon.updateVisibility();
+                break;
+            default:
+                break;
         }
     }
 }
