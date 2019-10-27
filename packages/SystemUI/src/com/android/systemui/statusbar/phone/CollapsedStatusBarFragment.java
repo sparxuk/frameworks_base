@@ -441,11 +441,11 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 switch(mLogoStyle) {
                 // Marty
             case 0:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_2_logo);
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
                 break;
                 // GZR Clown
             case 1:
-                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_logo);
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_clown_2_logo);
                 break;
                 // GZR Big Top
             case 2:
@@ -484,7 +484,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
                 break;	
             default:
-                logo = getContext().getDrawable(R.drawable.status_bar_clown_2_logo);
+                logo = getContext().getDrawable(R.drawable.status_bar_clown_logo);
                 break;
         }
 
