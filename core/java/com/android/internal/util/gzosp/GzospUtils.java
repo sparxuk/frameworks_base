@@ -60,6 +60,13 @@ public class GzospUtils {
         }
     }
 
+    public static void goToSleep(Context context) {
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        if(pm != null) {
+            pm.goToSleep(SystemClock.uptimeMillis());
+        }
+    }
+
     public static boolean isWifiOnly(Context context) {
         ConnectivityManager cm = (ConnectivityManager)context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
