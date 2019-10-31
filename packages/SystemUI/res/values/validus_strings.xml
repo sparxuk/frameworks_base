@@ -82,5 +82,8 @@
 
     <!-- Transparent qs statusbar -->
     <string name="tuner_status_bar_bg_transparency">Transparent status bar background</string>
+
+    <!--Screenrecord Tile-->
+    <string name="screenrecorder_title_tile">Screenrecord</string>
     
 </resources>
