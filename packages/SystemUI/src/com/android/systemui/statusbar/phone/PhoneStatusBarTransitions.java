@@ -32,7 +32,7 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
     private final PhoneStatusBarView mView;
     private final float mIconAlphaWhenOpaque;
 
-    private View mLeftSide, mStatusIcons, mBattery, mClock, mLogoIcon, mNetworkTraffic;
+    private View mLeftSide, mStatusIcons, mBattery, mClock, mLogoIcon;
     private Animator mCurrentAnimation;
 
     public PhoneStatusBarTransitions(PhoneStatusBarView view) {
@@ -45,7 +45,6 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
     public void init() {
         mLeftSide = mView.findViewById(R.id.status_bar_left_side);
         mStatusIcons = mView.findViewById(R.id.statusIcons);
-        mNetworkTraffic = mView.findViewById(R.id.networkTraffic);
         mBattery = mView.findViewById(R.id.battery);
         mLogoIcon = mView.findViewById(R.id.status_bar_logo);
         applyModeBackground(-1, getMode(), false /*animate*/);
@@ -90,7 +89,6 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
             anims.playTogether(
                     animateTransitionTo(mLeftSide, newAlpha),
                     animateTransitionTo(mStatusIcons, newAlpha),
-                    animateTransitionTo(mNetworkTraffic, newAlpha),
                     animateTransitionTo(mBattery, newAlphaBC),
                     animateTransitionTo(mLogoIcon, newAlpha)
                     );
@@ -102,7 +100,6 @@ public final class PhoneStatusBarTransitions extends BarTransitions {
         } else {
             mLeftSide.setAlpha(newAlpha);
             mStatusIcons.setAlpha(newAlpha);
-			mNetworkTraffic.setAlpha(newAlpha);
             mBattery.setAlpha(newAlphaBC);
             mLogoIcon.setAlpha(newAlpha);
         }
