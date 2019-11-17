@@ -102,7 +102,7 @@ public class MusicTile extends QSTileImpl<BooleanState> {
 
     @Override
     public int getMetricsCategory() {
-        return MetricsEvent.CUSTOM_QUICK_TILES;
+        return MetricsEvent.VALIDUS;
     }
 
     @Override
