@@ -5163,6 +5163,14 @@ public final class Settings {
         private static final Validator QS_BLUR_ALPHA_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * @hide
+         */
+        public static final String OMNI_USE_OLD_MOBILETYPE = "use_old_mobiletype";
+
+        private static final Validator OMNI_USE_OLD_MOBILETYPE_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5265,6 +5273,7 @@ public final class Settings {
             QS_PANEL_BG_USE_ACCENT,
             QS_BLUR,
             QS_BLUR_ALPHA,
+            OMNI_USE_OLD_MOBILETYPE,
         };
 
         /**
@@ -5423,6 +5432,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_WALL);
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_FW);
             PRIVATE_SETTINGS.add(QS_PANEL_BG_USE_ACCENT);
+            PRIVATE_SETTINGS.add(OMNI_USE_OLD_MOBILETYPE);
         }
 
         /**
@@ -5565,6 +5575,7 @@ public final class Settings {
             VALIDATORS.put(QS_PANEL_BG_USE_ACCENT, QS_PANEL_BG_USE_ACCENT_VALIDATOR);
             VALIDATORS.put(QS_BLUR, QS_BLUR_VALIDATOR);
             VALIDATORS.put(QS_BLUR_ALPHA, QS_BLUR_ALPHA_VALIDATOR);
+            VALIDATORS.put(OMNI_USE_OLD_MOBILETYPE, OMNI_USE_OLD_MOBILETYPE_VALIDATOR);
         }
 
         /**
