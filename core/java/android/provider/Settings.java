@@ -4921,6 +4921,15 @@ public final class Settings {
                 BOOLEAN_VALIDATOR;
 
         /**
+         * QS footer text
+         * @hide
+         */
+        public static final String VALIDUS_FOOTER_TEXT_STRING = "validus_footer_text_string";
+        /** @hide */
+        public static final Validator VALIDUS_FOOTER_TEXT_STRING_VALIDATOR =
+                ANY_STRING_VALIDATOR;
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
@@ -5007,6 +5016,7 @@ public final class Settings {
             VOLUME_KEY_CURSOR_CONTROL,
             OMNI_SYSTEM_PROXI_CHECK_ENABLED,
             VALIDUS_FOOTER_TEXT_SHOW,
+            VALIDUS_FOOTER_TEXT_STRING,
         };
 
         /**
@@ -5267,6 +5277,7 @@ public final class Settings {
             VALIDATORS.put(VOLUME_KEY_CURSOR_CONTROL, VOLUME_KEY_CURSOR_CONTROL_VALIDATOR);
             VALIDATORS.put(OMNI_SYSTEM_PROXI_CHECK_ENABLED, OMNI_SYSTEM_PROXI_CHECK_ENABLED_VALIDATOR);
             VALIDATORS.put(VALIDUS_FOOTER_TEXT_SHOW, VALIDUS_FOOTER_TEXT_SHOW_VALIDATOR);
+            VALIDATORS.put(VALIDUS_FOOTER_TEXT_STRING, VALIDUS_FOOTER_TEXT_STRING_VALIDATOR);
         }
 
         /**
