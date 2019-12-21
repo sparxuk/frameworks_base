@@ -30,5 +30,8 @@
   <java-symbol type="style" name="Animation.Toast.Translucent" />
   <java-symbol type="style" name="Animation.Toast.SlideRightLeft" />
   <java-symbol type="style" name="Animation.Toast.SlideLeftRight" />
+
+  <!-- Pocket Mode -->
+  <java-symbol type="bool" name="config_proxiSensorWakupCheck" />
   
 </resources>
