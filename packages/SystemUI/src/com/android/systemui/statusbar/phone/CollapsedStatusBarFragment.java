@@ -495,6 +495,10 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
                 // Oreo Wolf
             case 10:
                 logo = getContext().getResources().getDrawable(R.drawable.status_bar_oreo_wolf_logo);
+                break;
+                // OnePlus
+            case 11:
+                logo = getContext().getResources().getDrawable(R.drawable.status_bar_oneplus_logo);
                 break;	
             default:
                 logo = getContext().getDrawable(R.drawable.status_bar_clown_logo);
