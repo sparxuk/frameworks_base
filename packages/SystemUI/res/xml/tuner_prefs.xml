@@ -32,6 +32,14 @@
             android:title="@string/tuner_brightness_position_bottom"
             sysui:defValue="false" />
 
+        <com.android.systemui.tuner.TunerSwitch
+            android:key="qs_show_auto_brightness"
+            sysui:defValue="true" />
+
+        <com.android.systemui.tuner.TunerSwitch
+            android:key="qs_show_minmax_brightness"
+            sysui:defValue="false" />
+
     </PreferenceScreen>
 
     <PreferenceScreen
