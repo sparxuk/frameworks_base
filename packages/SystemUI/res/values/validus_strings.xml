@@ -75,6 +75,6 @@
     <string name="accessibility_quick_settings_cpuinfo_on">CPU Info on</string>
 
     <!-- Validus Settings Tile -->
-    <string name="quick_settings_validus_label">Validus</string>
+    <string name="quick_settings_validus_label">FunHouse</string>
     
 </resources>
