@@ -40,6 +40,11 @@
             android:key="qs_show_minmax_brightness"
             sysui:defValue="false" />
 
+        <com.android.systemui.tuner.TunerSwitch
+            android:key="qs_status_bar_bg_transparency"
+            android:title="@string/tuner_status_bar_bg_transparency"
+            sysui:defValue="false" />
+
     </PreferenceScreen>
 
     <PreferenceScreen
