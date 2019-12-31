@@ -89,5 +89,6 @@
     <!-- Tuner Icons -->
     <string name="status_bar_vpn">VPN</string>
     <string name="quick_settings_roaming_title">Roaming indicator</string>
+    <string name="status_bar_location">Location</string>
        
 </resources>
