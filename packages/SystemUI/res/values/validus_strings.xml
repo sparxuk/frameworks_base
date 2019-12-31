@@ -86,4 +86,7 @@
     <!--Screenrecord Tile-->
     <string name="screenrecorder_title_tile">Screenrecord</string>
     
+    <!-- Tuner VPN Icon -->
+    <string name="status_bar_vpn">VPN</string>
+    
 </resources>
