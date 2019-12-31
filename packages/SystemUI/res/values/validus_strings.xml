@@ -86,7 +86,8 @@
     <!--Screenrecord Tile-->
     <string name="screenrecorder_title_tile">Screenrecord</string>
     
-    <!-- Tuner VPN Icon -->
+    <!-- Tuner Icons -->
     <string name="status_bar_vpn">VPN</string>
-    
+    <string name="quick_settings_roaming_title">Roaming indicator</string>
+       
 </resources>
