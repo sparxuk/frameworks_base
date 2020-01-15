@@ -18,12 +18,14 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := frameworks-base-overlays
 LOCAL_REQUIRED_MODULES := \
 	AccentColorBlackOverlay \
+	AccentColorBlueGreyOverlay \
 	AccentColorCinnamonOverlay \
 	AccentColorClownsNoseOverlay \
 	AccentColorOceanOverlay \
 	AccentColorOrchidOverlay \
 	AccentColorSpaceOverlay \
 	AccentColorGreenOverlay \
+	AccentColorMintOverlay \
 	AccentColorPurpleOverlay \
 	DisplayCutoutEmulationCornerOverlay \
 	DisplayCutoutEmulationDoubleOverlay \
