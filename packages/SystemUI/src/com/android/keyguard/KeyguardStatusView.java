@@ -38,7 +38,7 @@ import android.view.View;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.TextClock;
 import androidx.core.graphics.ColorUtils;
 
 import com.android.internal.widget.LockPatternUtils;
@@ -64,6 +64,7 @@ public class KeyguardStatusView extends GridLayout implements
     private TextView mLogoutView;
     private KeyguardClockSwitch mClockView;
     private TextView mOwnerInfo;
+    private TextClock mDefaultClockView;
     private KeyguardSliceView mKeyguardSlice;
     private View mNotificationIcons;
     private Runnable mPendingMarqueeStart;
@@ -398,6 +399,7 @@ public class KeyguardStatusView extends GridLayout implements
                 Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 2, UserHandle.USER_CURRENT);
 
         mClockView = findViewById(R.id.keyguard_clock_container);
+        mDefaultClockView = findViewById(R.id.default_clock_view);
 
         switch (mClockSelection) {
             case 1: // hidden
@@ -411,24 +413,30 @@ public class KeyguardStatusView extends GridLayout implements
                 break;
             case 4: // default (accent)
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
             case 5: // default (accent hr)
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
             case 6: // default (accent min)
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
             case 7: // sammy
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
             case 8: // sammy (bold)
                 mClockView.setVisibility(View.VISIBLE);
                 break;
             case 9: // sammy (accent)
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
             case 10: // sammy (accent alt)
                 mClockView.setVisibility(View.VISIBLE);
+                mDefaultClockView.setLineSpacing(0, 0.8f);
                 break;
         }
     }
