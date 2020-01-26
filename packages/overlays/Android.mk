@@ -54,6 +54,8 @@ LOCAL_REQUIRED_MODULES := \
 	PrimaryColorValidusBlackOverlay \
 	PrimaryColorBastilleOverlay \
 	PrimaryColorBastilleDarkerOverlay \
+	PrimaryColorLavishOverlay \
+	PrimaryColorSilverSurferOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
