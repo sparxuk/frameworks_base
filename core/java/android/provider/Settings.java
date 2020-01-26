@@ -5163,6 +5163,14 @@ public final class Settings {
         private static final Validator QS_BLUR_ALPHA_VALIDATOR = ANY_INTEGER_VALIDATOR;
 
         /**
+         * QS blur alpha
+         * @hide
+         */
+        public static final String QS_BLUR_INTENSITY = "qs_blur_intensity";
+        /** @hide */
+        private static final Validator QS_BLUR_INTENSITY_VALIDATOR = ANY_INTEGER_VALIDATOR;
+
+        /**
          * @hide
          */
         public static final String OMNI_USE_OLD_MOBILETYPE = "use_old_mobiletype";
@@ -5273,6 +5281,7 @@ public final class Settings {
             QS_PANEL_BG_USE_ACCENT,
             QS_BLUR,
             QS_BLUR_ALPHA,
+            QS_BLUR_INTENSITY,
             OMNI_USE_OLD_MOBILETYPE,
         };
 
@@ -5575,6 +5584,7 @@ public final class Settings {
             VALIDATORS.put(QS_PANEL_BG_USE_ACCENT, QS_PANEL_BG_USE_ACCENT_VALIDATOR);
             VALIDATORS.put(QS_BLUR, QS_BLUR_VALIDATOR);
             VALIDATORS.put(QS_BLUR_ALPHA, QS_BLUR_ALPHA_VALIDATOR);
+            VALIDATORS.put(QS_BLUR_INTENSITY, QS_BLUR_INTENSITY_VALIDATOR);
             VALIDATORS.put(OMNI_USE_OLD_MOBILETYPE, OMNI_USE_OLD_MOBILETYPE_VALIDATOR);
         }
 
