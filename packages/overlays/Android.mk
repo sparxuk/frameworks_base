@@ -52,6 +52,8 @@ LOCAL_REQUIRED_MODULES := \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
 	PrimaryColorValidusBlackOverlay \
+	PrimaryColorBastilleOverlay \
+	PrimaryColorBastilleDarkerOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
