@@ -18,14 +18,11 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := frameworks-base-overlays
 LOCAL_REQUIRED_MODULES := \
 	AccentColorBlackOverlay \
-	AccentColorBlueGreyOverlay \
 	AccentColorCinnamonOverlay \
-	AccentColorClownsNoseOverlay \
 	AccentColorOceanOverlay \
 	AccentColorOrchidOverlay \
 	AccentColorSpaceOverlay \
 	AccentColorGreenOverlay \
-	AccentColorMintOverlay \
 	AccentColorPurpleOverlay \
 	DisplayCutoutEmulationCornerOverlay \
 	DisplayCutoutEmulationDoubleOverlay \
@@ -46,16 +43,10 @@ LOCAL_REQUIRED_MODULES := \
 	IconPackRoundedSettingsOverlay \
 	IconPackRoundedSystemUIOverlay \
 	IconPackRoundedThemePickerUIOverlay \
-	IconShapeCylinderOverlay \
 	IconShapeRoundedRectOverlay \
 	IconShapeSquareOverlay \
 	IconShapeSquircleOverlay \
 	IconShapeTeardropOverlay \
-	PrimaryColorValidusBlackOverlay \
-	PrimaryColorBastilleOverlay \
-	PrimaryColorBastilleDarkerOverlay \
-	PrimaryColorLavishOverlay \
-	PrimaryColorSilverSurferOverlay \
 	NavigationBarMode3ButtonOverlay \
 	NavigationBarMode2ButtonOverlay \
 	NavigationBarModeGesturalOverlay \
