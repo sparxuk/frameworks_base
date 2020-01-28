@@ -5259,6 +5259,16 @@ public final class Settings {
         private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+         /**
+         * Whether hide everything on aod when  ambient lights are enabled
+         * @hide
+         */
+
+        public static final String OMNI_AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD = "ambient_notification_light_hide_aod";
+
+        private static final Validator OMNI_AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR =
+                BOOLEAN_VALIDATOR;
+
         /**
          * helper setting to contain the current pulse reason so we can check
          * if it has been triggered from a notification or a gesture
@@ -5377,6 +5387,7 @@ public final class Settings {
             OMNI_AMBIENT_NOTIFICATION_LIGHT,
             OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED,
             OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED,
+            OMNI_AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD,
         };
 
         /**
@@ -5689,6 +5700,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT, OMNI_AMBIENT_NOTIFICATION_LIGHT_VALIDATOR);
             VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED, OMNI_AMBIENT_NOTIFICATION_LIGHT_ACTIVATED_VALIDATOR);
             VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED, OMNI_AMBIENT_NOTIFICATION_LIGHT_ENABLED_VALIDATOR);
+            VALIDATORS.put(OMNI_AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD, OMNI_AMBIENT_NOTIFICATION_LIGHT_HIDE_AOD_VALIDATOR);
         }
 
         /**
