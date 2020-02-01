@@ -5303,6 +5303,7 @@ public final class Settings {
             QS_BLUR_INTENSITY,
             OMNI_USE_OLD_MOBILETYPE,
             QS_RUNNING_SERVICES_TOGGLE,
+            CLOCK_SHOW_STATUS_AREA,
         };
 
         /**
