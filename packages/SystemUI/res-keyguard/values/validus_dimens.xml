@@ -26,6 +26,8 @@
     <dimen name="analog_clock_height">100dp</dimen>
     <dimen name="digital_clock_two_line_spacing">-20dp</dimen>
     <dimen name="clock_bottom_margin">8dp</dimen>
+    <dimen name="new_custom_clock_width">150dp</dimen>
+    <dimen name="new_custom_clock_height">150dp</dimen>
 
     <!-- padding for date view -->
     <dimen name="widget_clock_normal_clock_padding">2dp</dimen>
@@ -39,4 +41,6 @@
     <!-- Accent Date styles padding-->
     <dimen name="widget_date_accent_box_padding_hor">10dp</dimen>
     <dimen name="widget_date_accent_box_padding_ver">6dp</dimen>
+
+
 </resources>

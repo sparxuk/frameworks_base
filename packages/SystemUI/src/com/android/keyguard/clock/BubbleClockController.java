@@ -25,6 +25,7 @@ import android.graphics.Paint.Style;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextClock;
 
 import com.android.internal.colorextraction.ColorExtractor;
@@ -55,11 +56,6 @@ public class BubbleClockController implements ClockPlugin {
     private final SysuiColorExtractor mColorExtractor;
 
     /**
-     * Computes preferred position of clock.
-     */
-    private final SmallClockPosition mClockPosition;
-
-    /**
      * Renders preview from clock view.
      */
     private final ViewPreviewer mRenderer = new ViewPreviewer();
@@ -69,12 +65,6 @@ public class BubbleClockController implements ClockPlugin {
      */
     private ClockLayout mView;
     private ImageClock mAnalogClock;
-
-    /**
-     * Small clock shown on lock screen above stack scroller.
-     */
-    private View mLockClockContainer;
-    private TextClock mLockClock;
 
     private final Context mContext;
 
@@ -108,24 +98,18 @@ public class BubbleClockController implements ClockPlugin {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
-        mClockPosition = new SmallClockPosition(res);
         mContext = context;
     }
 
     private void createViews() {
         mView = (ClockLayout) mLayoutInflater.inflate(R.layout.bubble_clock, null);
         mAnalogClock = (ImageClock) mView.findViewById(R.id.analog_clock);
-
-        mLockClockContainer = mLayoutInflater.inflate(R.layout.digital_clock, null);
-        mLockClock = (TextClock) mLockClockContainer.findViewById(R.id.lock_screen_clock);
     }
 
     @Override
     public void onDestroyView() {
         mView = null;
         mAnalogClock = null;
-        mLockClockContainer = null;
-        mLockClock = null;
     }
 
     @Override
@@ -162,10 +146,7 @@ public class BubbleClockController implements ClockPlugin {
 
     @Override
     public View getView() {
-        if (mLockClockContainer == null) {
-            createViews();
-        }
-        return mLockClockContainer;
+        return null;
     }
 
     @Override
@@ -178,7 +159,7 @@ public class BubbleClockController implements ClockPlugin {
 
     @Override
     public int getPreferredY(int totalHeight) {
-        return mClockPosition.getPreferredY();
+        return totalHeight / 2;
     }
 
     @Override
@@ -201,7 +182,6 @@ public class BubbleClockController implements ClockPlugin {
     @Override
     public void setDarkAmount(float darkAmount) {
         mPalette.setDarkAmount(darkAmount);
-        mClockPosition.setDarkAmount(darkAmount);
         mView.setDarkAmount(darkAmount);
     }
 
@@ -209,7 +189,6 @@ public class BubbleClockController implements ClockPlugin {
     public void onTimeTick() {
         mAnalogClock.onTimeChanged();
         mView.onTimeChanged();
-        mLockClock.refresh();
     }
 
     @Override
@@ -221,10 +200,5 @@ public class BubbleClockController implements ClockPlugin {
     public boolean shouldShowStatusArea() {
         if (mContext == null) return true;
         return Settings.System.getInt(mContext.getContentResolver(), Settings.System.CLOCK_SHOW_STATUS_AREA, 1) == 1;
-    }
-
-    @Override
-    public boolean shouldShowInBigContainer() {
-        return true;
     }
 }
