@@ -5230,6 +5230,17 @@ public final class Settings {
         private static final Validator OMNI_NOTIFICATION_PULSE_VALIDATOR =
                 BOOLEAN_VALIDATOR;
 
+
+         /**
+         * Pulse Ambient lights color
+         * @hide
+         */
+        public static final String OMNI_NOTIFICATION_PULSE_COLOR = "ambient_notification_light_color";
+
+        private static final Validator OMNI_NOTIFICATION_PULSE_COLOR_VALIDATOR =
+                ANY_INTEGER_VALIDATOR;;
+
+
          /**
          * Whether to enable Ambient Edge lights
          * @hide
@@ -5387,6 +5398,7 @@ public final class Settings {
             OMNI_AOD_NOTIFICATION_PULSE,
             OMNI_AOD_NOTIFICATION_PULSE_CLEAR,
             OMNI_NOTIFICATION_PULSE_ACCENT,
+            OMNI_NOTIFICATION_PULSE_COLOR,
         };
 
         /**
@@ -5551,6 +5563,7 @@ public final class Settings {
             PRIVATE_SETTINGS.add(OMNI_AOD_NOTIFICATION_PULSE);
             PRIVATE_SETTINGS.add(OMNI_AOD_NOTIFICATION_PULSE_CLEAR);
             PRIVATE_SETTINGS.add(OMNI_NOTIFICATION_PULSE_ACCENT);
+            PRIVATE_SETTINGS.add(OMNI_NOTIFICATION_PULSE_COLOR);
         }
 
         /**
@@ -5701,6 +5714,7 @@ public final class Settings {
             VALIDATORS.put(OMNI_AOD_NOTIFICATION_PULSE, OMNI_AOD_NOTIFICATION_PULSE_VALIDATOR);
             VALIDATORS.put(OMNI_AOD_NOTIFICATION_PULSE_CLEAR, OMNI_AOD_NOTIFICATION_PULSE_CLEAR_VALIDATOR);
             VALIDATORS.put(OMNI_NOTIFICATION_PULSE_ACCENT, OMNI_NOTIFICATION_PULSE_ACCENT_VALIDATOR);
+            VALIDATORS.put(OMNI_NOTIFICATION_PULSE_COLOR, OMNI_NOTIFICATION_PULSE_COLOR_VALIDATOR);
         }
 
         /**
