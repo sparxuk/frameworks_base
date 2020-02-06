@@ -865,10 +865,6 @@ public class DisplayPolicy {
                 attrs.hideTimeoutMilliseconds = mAccessibilityManager.getRecommendedTimeoutMillis(
                         (int) attrs.hideTimeoutMilliseconds,
                         AccessibilityManager.FLAG_CONTENT_TEXT);
-                // Toast can show with below conditions when the screen is locked.
-                if (canToastShowWhenLocked(callingPid)) {
-                    attrs.flags |= WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
-                }
 
                 switch(Settings.System.getIntForUser(mContext.getContentResolver(),
                         Settings.System.TOAST_ANIMATION, 1, UserHandle.USER_CURRENT)) {
@@ -921,6 +917,13 @@ public class DisplayPolicy {
                         attrs.windowAnimations = com.android.internal.R.style.Animation_Toast_SlideRightLeft;
                         break;
                 }
+                // Toast can show with below conditions when the screen is locked.
+                if (canToastShowWhenLocked(callingPid)) {
+                    attrs.flags |= WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+                }
+                // Toasts can't be clickable
+                attrs.flags |= WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+                break;
         }
 
         if (attrs.type != TYPE_STATUS_BAR) {
