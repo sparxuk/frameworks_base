@@ -91,6 +91,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<CPUInfoTile> mCPUInfoTileProvider;
     private final Provider<ScreenRecordTile> mScreenRecordTileProvider;
     private final Provider<SyncTile> mSyncTileProvider;
+    private final Provider<ScreenStabilizationTile> mScreenStabilizationTileProvider;
 
     private QSTileHost mHost;
 
@@ -117,7 +118,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<SoundTile> soundTileProvider,
             Provider<CPUInfoTile> cpuInfoTileProvider,
             Provider<ScreenRecordTile> screenRecordTileProvider,
-            Provider<SyncTile> syncTileProvider) {
+            Provider<SyncTile> syncTileProvider,
+            Provider<ScreenStabilizationTile> screenStabilizationTileProvider) {
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
@@ -141,6 +143,7 @@ public class QSFactoryImpl implements QSFactory {
         mCPUInfoTileProvider = cpuInfoTileProvider;
         mScreenRecordTileProvider = screenRecordTileProvider;
         mSyncTileProvider = syncTileProvider;
+        mScreenStabilizationTileProvider = screenStabilizationTileProvider;
     }
 
     public void setHost(QSTileHost host) {
