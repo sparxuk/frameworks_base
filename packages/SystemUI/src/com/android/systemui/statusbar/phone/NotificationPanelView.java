@@ -3491,7 +3491,7 @@ public class NotificationPanelView extends PanelView implements
                 if (activeNotif && pulseReasonNotification) {
                     // show the bars if we have to
                     if (pulseLights) {
-                        mPulseLightsView.animateNotification(true);
+                        mPulseLightsView.animateNotification();
                         mPulseLightsView.setVisibility(View.VISIBLE);
                     } else {
                         // bars can still be visible as leftover
@@ -3515,7 +3515,7 @@ public class NotificationPanelView extends PanelView implements
                     if (ambientLightsHideAod) {
                         showAodContent(false);
                     }
-                    mPulseLightsView.animateNotification(true);
+                    mPulseLightsView.animateNotification();
                     mPulseLightsView.setVisibility(View.VISIBLE);
                     mAmbientPulseLightRunning = true;
                     if (ambientLightsTimeout != 0) {
@@ -3741,6 +3741,7 @@ public class NotificationPanelView extends PanelView implements
             Log.d(TAG, "stopNotificationPulse mAmbientPulseLightRunning = " + mAmbientPulseLightRunning);
         }
         mPulseLightsView.setVisibility(View.GONE);
+        mPulseLightsView.stopAnimateNotification();
         Settings.System.putIntForUser(mContext.getContentResolver(),
                 Settings.System.OMNI_AOD_NOTIFICATION_PULSE_TRIGGER, 0,
                 UserHandle.USER_CURRENT);
