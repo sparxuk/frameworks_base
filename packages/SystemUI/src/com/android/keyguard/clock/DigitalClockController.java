@@ -16,11 +16,13 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context; 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
+import android.provider.Settings; 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -66,6 +68,13 @@ public abstract class DigitalClockController implements ClockPlugin {
     private boolean mTwoLine;
     private boolean mBoldHours;
 
+    private final Context mContext;
+
+    public DigitalClockController(Resources res, LayoutInflater inflater,
+            SysuiColorExtractor colorExtractor, boolean twoLine, boolean boldHours) {
+        this(res, inflater, colorExtractor, twoLine, boldHours, null);
+    }
+
     /**
      * Create a DigitalClockController instance.
      *
@@ -74,12 +83,13 @@ public abstract class DigitalClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public DigitalClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor, boolean twoLine, boolean boldHours) {
+            SysuiColorExtractor colorExtractor, boolean twoLine, boolean boldHours, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
         mTwoLine = twoLine;
         mBoldHours = boldHours;
+        mContext = context;
     }
 
     private void createViews() {
@@ -139,7 +149,8 @@ public abstract class DigitalClockController implements ClockPlugin {
 
     @Override
     public boolean shouldShowStatusArea() {
-        return true;
+        if (mContext == null) return true;
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.CLOCK_SHOW_STATUS_AREA, 0) == 1;
     }
 
     @Override

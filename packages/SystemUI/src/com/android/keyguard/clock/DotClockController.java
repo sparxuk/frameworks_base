@@ -13,11 +13,13 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context; 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
+import android.provider.Settings; 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextClock;
@@ -76,6 +78,13 @@ public class DotClockController implements ClockPlugin {
      */
     private final ClockPalette mPalette = new ClockPalette();
 
+    private final Context mContext;
+
+    public DotClockController(Resources res, LayoutInflater inflater,
+            SysuiColorExtractor colorExtractor) {
+        this(res, inflater, colorExtractor, null);
+    }
+
     /**
      * Create a BubbleClockController instance.
      *
@@ -84,11 +93,12 @@ public class DotClockController implements ClockPlugin {
      * @param colorExtractor Extracts accent color from wallpaper.
      */
     public DotClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         mResources = res;
         mLayoutInflater = inflater;
         mColorExtractor = colorExtractor;
         mClockPosition = new SmallClockPosition(res);
+        mContext = context; 
     }
 
     private void createViews() {
@@ -202,6 +212,7 @@ public class DotClockController implements ClockPlugin {
 
     @Override
     public boolean shouldShowStatusArea() {
-        return true;
+        if (mContext == null) return true;
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.CLOCK_SHOW_STATUS_AREA, 0) == 1;
     }
 }

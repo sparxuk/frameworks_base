@@ -16,6 +16,7 @@
 package com.android.keyguard.clock;
 
 import android.app.WallpaperManager;
+import android.content.Context; 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,7 +33,7 @@ import com.android.systemui.plugins.ClockPlugin;
 
 public class TwoLineDigitalClockController extends DigitalClockController {
     public TwoLineDigitalClockController(Resources res, LayoutInflater inflater,
-            SysuiColorExtractor colorExtractor) {
+            SysuiColorExtractor colorExtractor, Context context) {
         super(res, inflater, colorExtractor, true, true);
     }
 
